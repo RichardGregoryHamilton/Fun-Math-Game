@@ -16,16 +16,31 @@ h1 {
   width: 15%;
 }
 
-#new-game {
+.game-btn {
   position: fixed;
-  margin-top: 16%;
   padding: 5px 10px;
-  background: blue;
   color: white;
 }
 
+#new-game {
+  margin-top: 16%;
+  background: blue;
+}
+
+#help {
+  position: fixed;
+  margin-top: 21%;
+  color: white;
+  background: green;
+}
+
+#game-help {
+  position: fixed;
+  margin-top: 27%;
+}
+
 .game-block {
-    margin: 16% 0;
+  margin: 16% 0;
 }
 
 .game-info {
@@ -49,9 +64,18 @@ h1 {
 }
 
 .equals {
-  background: yellow;
+  background: gold;
 }
 
 .lessThan {
   background: red;
+}
+
+#level {
+  white-space: nowrap;
+}
+
+#score, #high-score {
+  margin-left: 10%;
+  font-weight: bold;
 }

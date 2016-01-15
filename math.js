@@ -1,66 +1,32 @@
-var scoreIndicator = document.getElementById("score");
-var levelIndicator = document.getElementById("level");
 var gameBlock = document.getElementsByClassName("game-block")[0];
 var controls = document.getElementsByClassName("controls")[0];
 
+var gameStart = false;
 var score = 0;
 var level = 1;
+var scores = [0];
 
-var colors = ["red", "orange", "yellow", "green", "lightblue"];
-
-var easyNums = [];
-var medNums = [];
-var hardNums = [];
-var extremeNums = [];
+var colors = ["red", "orange", "gold", "green", "lightblue"];
 var operators = ["+", "-", "*", "/"];
 
-// The number pools will be generated from the below conditionals
-for (var i = 1; i <= 10; i++) {
-    easyNums.push(i);
-    medNums.push(i);
-    medNums.push(-i);
-    hardNums.push(i);
-    hardNums.push(-i);
-    extremeNums.push(i);
-    extremeNums.push(-i);
-}
+$("#game-help").hide();
 
-for (var i = 11; i < 20; i++) {
-    medNums.push(i);
-    medNums.push(-i);
-    hardNums.push(i);
-    hardNums.push(-i);
-    extremeNums.push(i);
-    extremeNums.push(-i);
-}
-
-for (var i = 21; i < 100; i++) {
-    hardNums.push(i);
-    hardNums.push(-i);
-    extremeNums.push(i);
-    extremeNums.push(-i);
-}
-
-for (var i = 100; i < 1000; i++) {
-    extremeNums.push(i);
-    extremeNums.push(-i);
-}
-
-// These functions return random numbers from each of the number pools
+// These functions return random numbers based on the level
 function randEasy() {
-    return easyNums[Math.floor(Math.random() * easyNums.length)];
+    return Math.floor(Math.random() * 10);
 }
 
 function randMed() {
-    return medNums[Math.floor(Math.random() * medNums.length)];
+    return Math.random() > 0.5 ? Math.floor(Math.random() * 20) : Math.floor(Math.random() * -20);
 }
 
 function randHard() {
-    return hardNums[Math.floor(Math.random() * hardNums.length)];
+    return Math.random() > 0.5 ? Math.floor(Math.random() * 100) : Math.floor(Math.random() * - 100);
 }
 
 function randExtreme() {
-    return extremeNums[Math.floor(Math.random() * extremeNums.length)];
+    return Math.random() > 0.5 ? Math.floor(Math.random() * 1000) :
+    Math.floor(Math.random() * -1000);
 }
 
 function randOperation() {
@@ -74,7 +40,7 @@ function randColor() {
 function generateExpressions() {
     var exp1 = document.createElement("div");
     var exp2 = document.createElement("div");
-    
+
     [exp1, exp2].forEach(function(exp,index) {
         exp.classList.add("exp" + (index + 1));
         exp.style.color = "white";
@@ -82,7 +48,7 @@ function generateExpressions() {
         exp.style.textAlign = "center";
         exp.style.padding = "8px 0";
         gameBlock.appendChild(exp);
-        
+
         // The expressions generated depend on the level. This is an arcade game
         if (level == 1) {
             exp.innerHTML = "" + randEasy() + " + " + randEasy();
@@ -104,39 +70,41 @@ function generateExpressions() {
 
 }
 
-// Creates the buttons. This can possibly be simplified
+// Creates the buttons
 function createButtons() {
-    var buttonGroup = document.createElement("div");
-    buttonGroup.className = "button-group";
-    controls.appendChild(buttonGroup);
-    
+
     var greaterThan = document.createElement("button");
     greaterThan.classList.add("greaterThan");
     var equals = document.createElement("button");
     equals.classList.add("equals");
     var lessThan = document.createElement("button");
     lessThan.classList.add("lessThan");
-    
+
     greaterThan.innerHTML = ">";
     equals.innerHTML = "=";
     lessThan.innerHTML ="<";
-    
-    buttonGroup.appendChild(greaterThan);
-    buttonGroup.appendChild(equals);
-    buttonGroup.appendChild(lessThan);
+
+    controls.appendChild(greaterThan);
+    controls.appendChild(equals);
+    controls.appendChild(lessThan);
 }
 
 // Update the score, remove expressions and generate new ones. Check for level increase
 function incrementScore() {
     score++;
-    scoreIndicator.innerHTML = "<strong>Score: </strong>" + score;
+    $("#level").html("<strong>Level: </strong>" + level + "<span id='score'>Score: " +
+    score + "</span><span id='high-score'> High Score: " + highScore() + "</span>");
     $(".exp1, .exp2").remove();
     generateExpressions();
     animateDivs();
     incrementLevel();
 }
 
-// I figure a switch statement is best for this
+function highScore() {
+    return Math.max.apply(Math,scores);
+}
+
+// There are multiple conditionals so a switch statement works best here
 function incrementLevel() {
      switch(true) {
          case (score < 10):
@@ -154,20 +122,15 @@ function incrementLevel() {
          case (score >= 40 && score < 50):
             level = 5;
             break;
-         case (score >= 50 && score < 60):
+         case (score >= 50):
             level = 6;
             break;
-         case (score >= 60 && score < 70):
-            level = 7;
-            break;
-         case (score >= 70):
-            level = 8;
-            break;
      }
-     levelIndicator.innerHTML = "<strong>Level: </strong>" + level;
+     $("#level").html("<strong>Level: </strong>" + level + "<span id='score'>Score: " +
+     score + "</span><span id='high-score'> High Score: " + highScore() + "</span>");
 }
 
-// Functions for each of the three choices. Possibly, this can be combined into one function
+// Functions for each of the three choices
 $("body").on("click", ".lessThan", function() {
     var num1 = eval($(".exp1").text());
     var num2 = eval($(".exp2").text());
@@ -187,23 +150,33 @@ $("body").on("click", ".greaterThan", function() {
 });
 
 function startGame() {
-    score = 0;
-    level = 1;
-    generateExpressions();
-    animateDivs();
-    scoreIndicator.innerHTML ="<strong>Score: </strong>" + score;
-    levelIndicator.innerHTML = "<strong>Level: </strong>" + level;
-    createButtons();
+    if (gameStart) {
+        return false;
+    }
+    else {
+        gameStart = true;
+        score = 0;
+        level = 1;
+        generateExpressions();
+        animateDivs();
+        $("#level").html("<strong>Level: </strong>" + level + "<span id='score'>Score: " + score + "</span><span id='high-score'> High Score: " + highScore() + "</span>");
+        createButtons();
+    }
 }
 
 function endGame() {
     $(".exp1, .exp2, .lessThan, .equals, .greaterThan").remove();
+    scores.push(score);
+    gameStart = false;
 }
 
+function showRules() {
+    $("#game-help").toggle();
+}
+
+// This starts the five second clock where you must make a move
 function animateDivs() {
     $(".exp2").animate( { "marginRight": "70%" }, 5000);
-    
-    // This starts the five second clock where you must make a move
     var previousScore = score;
     setTimeout(function() {
     if (score == previousScore) {

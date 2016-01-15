@@ -1,12 +1,23 @@
 <h1>Math Game</h1>
 
 <div class="game-info">
-  <p id="level"></p>
-  <p id="score"></p>
+  <p id="level">
+    <span id="score"></span>
+    <span id="high-score"></span>
+  </p>
 </div>
 
 <div class="game-block"></div>
 
 <div class="controls"></div>
   
-<button id="new-game" onclick="startGame()">New Game</button>
+<button class="game-btn" id="new-game" onclick="startGame()">New Game</button>
+<button class="game-btn" id="help" onclick="showRules()">How To Play</button>
+
+<div id="game-help">
+  <p>In this math game, you are given two expressions.</p>
+  <p>Your goal is to compare the two expressions</p>
+  <p> If the left expression is greater than the one on the right, press the left button</p>
+  <p>If the two expressions are equal, press the equals button</p>
+  <p>If the expression on the left is less than the expression on the right, press the right button</p>
+</div>
