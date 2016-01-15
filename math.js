@@ -188,7 +188,8 @@ function endGame() {
 }
 
 function animateDivs() {
-    $(".exp2").animate( { "marginRight": "70%" }, 5000);
+    $(".exp1").animate( { "marginLeft": "215px" }, 5000);
+    $(".exp2").animate( { "marginRight": "215px" }, 5000);
     var previousScore = score;
     setTimeout(function() {
     if (score == previousScore) {
