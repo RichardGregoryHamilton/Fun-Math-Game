@@ -14,6 +14,7 @@ var hardNums = [];
 var extremeNums = [];
 var operators = ["+", "-", "*", "/"];
 
+// The number pools will be generated from the below conditionals
 for (var i = 1; i <= 10; i++) {
     easyNums.push(i);
     medNums.push(i);
@@ -45,6 +46,7 @@ for (var i = 100; i < 1000; i++) {
     extremeNums.push(-i);
 }
 
+// These functions return random numbers from each of the number pools
 function randEasy() {
     return easyNums[Math.floor(Math.random() * easyNums.length)];
 }
@@ -81,6 +83,7 @@ function generateExpressions() {
         exp.style.padding = "8px 0";
         gameBlock.appendChild(exp);
         
+        // The expressions generated depend on the level. This is an arcade game
         if (level == 1) {
             exp.innerHTML = "" + randEasy() + " + " + randEasy();
         }
@@ -101,6 +104,7 @@ function generateExpressions() {
 
 }
 
+// Creates the buttons. This can possibly be simplified
 function createButtons() {
     var buttonGroup = document.createElement("div");
     buttonGroup.className = "button-group";
@@ -122,6 +126,7 @@ function createButtons() {
     buttonGroup.appendChild(lessThan);
 }
 
+// Update the score, remove expressions and generate new ones. Check for level increase
 function incrementScore() {
     score++;
     scoreIndicator.innerHTML = "<strong>Score: </strong>" + score;
@@ -131,6 +136,7 @@ function incrementScore() {
     incrementLevel();
 }
 
+// I figure a switch statement is best for this
 function incrementLevel() {
      switch(true) {
          case (score < 10):
@@ -148,13 +154,20 @@ function incrementLevel() {
          case (score >= 40 && score < 50):
             level = 5;
             break;
-         case (score >= 50):
+         case (score >= 50 && score < 60):
             level = 6;
+            break;
+         case (score >= 60 && score < 70):
+            level = 7;
+            break;
+         case (score >= 70):
+            level = 8;
             break;
      }
      levelIndicator.innerHTML = "<strong>Level: </strong>" + level;
 }
 
+// Functions for each of the three choices. Possibly, this can be combined into one function
 $("body").on("click", ".lessThan", function() {
     var num1 = eval($(".exp1").text());
     var num2 = eval($(".exp2").text());
@@ -188,8 +201,9 @@ function endGame() {
 }
 
 function animateDivs() {
-    $(".exp1").animate( { "marginLeft": "215px" }, 5000);
-    $(".exp2").animate( { "marginRight": "215px" }, 5000);
+    $(".exp2").animate( { "marginRight": "70%" }, 5000);
+    
+    // This starts the five second clock where you must make a move
     var previousScore = score;
     setTimeout(function() {
     if (score == previousScore) {
