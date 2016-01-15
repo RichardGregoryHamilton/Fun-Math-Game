@@ -15,7 +15,7 @@ var extremeNums = [];
 var operators = ["+", "-", "*", "/"];
 
 for (var i = 1; i <= 10; i++) {
-	easyNums.push(i);
+    easyNums.push(i);
     medNums.push(i);
     medNums.push(-i);
     hardNums.push(i);
@@ -25,7 +25,7 @@ for (var i = 1; i <= 10; i++) {
 }
 
 for (var i = 11; i < 20; i++) {
-		medNums.push(i);
+    medNums.push(i);
     medNums.push(-i);
     hardNums.push(i);
     hardNums.push(-i);
@@ -34,34 +34,39 @@ for (var i = 11; i < 20; i++) {
 }
 
 for (var i = 21; i < 100; i++) {
-	hardNums.push(i);
+    hardNums.push(i);
     hardNums.push(-i);
     extremeNums.push(i);
     extremeNums.push(-i);
 }
 
+for (var i = 100; i < 1000; i++) {
+    extremeNums.push(i);
+    extremeNums.push(-i);
+}
+
 function randEasy() {
-	return easyNums[Math.floor(Math.random() * easyNums.length)];
+    return easyNums[Math.floor(Math.random() * easyNums.length)];
 }
 
 function randMed() {
-	return medNums[Math.floor(Math.random() * medNums.length)];
+    return medNums[Math.floor(Math.random() * medNums.length)];
 }
 
 function randHard() {
-	return hardNums[Math.floor(Math.random() * hardNums.length)];
+    return hardNums[Math.floor(Math.random() * hardNums.length)];
 }
 
 function randExtreme() {
-	return extremeNums[Math.floor(Math.random() * extremeNums.length)];
+    return extremeNums[Math.floor(Math.random() * extremeNums.length)];
 }
 
 function randOperation() {
-	return operators[Math.floor(Math.random() * operators.length)];
+    return operators[Math.floor(Math.random() * operators.length)];
 }
 
 function randColor() {
-	return colors[Math.floor(Math.random() * colors.length)];
+    return colors[Math.floor(Math.random() * colors.length)];
 }
 
 function generateExpressions() {
@@ -69,27 +74,27 @@ function generateExpressions() {
     var exp2 = document.createElement("div");
     
     [exp1, exp2].forEach(function(exp,index) {
-    	exp.classList.add("exp" + (index + 1));
+        exp.classList.add("exp" + (index + 1));
         exp.style.color = "white";
         exp.style.background = randColor();
         exp.style.textAlign = "center";
         exp.style.padding = "8px 0";
         gameBlock.appendChild(exp);
         
-    	if (level == 1) {
-    		exp.innerHTML = "" + randEasy() + " + " + randEasy();
+        if (level == 1) {
+            exp.innerHTML = "" + randEasy() + " + " + randEasy();
         }
         else if (level == 2 || level == 3) {
-        	exp.innerHTML = "" + randMed() + " + " + randMed();
+            exp.innerHTML = "" + randMed() + " + " + randMed();
         }
         else if (level == 4 || level == 5) {
-        	exp.innerHTML = "" + randHard() + " + " + randHard();
+            exp.innerHTML = "" + randHard() + " + " + randHard();
         }
         else if (level == 6 || level == 7) {
-        	exp.innerHTML = "" + randHard() + randOperation() + randHard();
+            exp.innerHTML = "" + randHard() + randOperation() + randHard();
         }
         else {
-        	exp.innerHTML = "" + randExtreme() + randOperation() +
+            exp.innerHTML = "" + randExtreme() + randOperation() +
             randExtreme();
         }
     });
@@ -97,7 +102,7 @@ function generateExpressions() {
 }
 
 function createButtons() {
-		var buttonGroup = document.createElement("div");
+    var buttonGroup = document.createElement("div");
     buttonGroup.className = "button-group";
     controls.appendChild(buttonGroup);
     
@@ -118,7 +123,7 @@ function createButtons() {
 }
 
 function incrementScore() {
-	score++;
+    score++;
     scoreIndicator.innerHTML = "<strong>Score: </strong>" + score;
     $(".exp1, .exp2").remove();
     generateExpressions();
@@ -138,13 +143,13 @@ function incrementLevel() {
              level = 3;
              break;
          case (score >= 30 && score < 40):
-         	level = 4;
+            level = 4;
             break;
          case (score >= 40 && score < 50):
-         	level = 5;
+            level = 5;
             break;
          case (score >= 50):
-       		level = 6;
+            level = 6;
             break;
      }
      levelIndicator.innerHTML = "<strong>Level: </strong>" + level;
@@ -171,7 +176,7 @@ $("body").on("click", ".greaterThan", function() {
 function startGame() {
     score = 0;
     level = 1;
-	generateExpressions();
+    generateExpressions();
     animateDivs();
     scoreIndicator.innerHTML ="<strong>Score: </strong>" + score;
     levelIndicator.innerHTML = "<strong>Level: </strong>" + level;
@@ -179,16 +184,15 @@ function startGame() {
 }
 
 function endGame() {
-	$(".exp1, .exp2, .lessThan, .equals, .greaterThan").remove();
+    $(".exp1, .exp2, .lessThan, .equals, .greaterThan").remove();
 }
 
 function animateDivs() {
-	$(".exp1").animate( { "marginLeft": "215px" }, 5000);
-	$(".exp2").animate( { "marginRight": "215px" }, 5000);
+    $(".exp2").animate( { "marginRight": "70%" }, 5000);
     var previousScore = score;
     setTimeout(function() {
     if (score == previousScore) {
-    	endGame()
+        endGame()
     }
   }, 5000);
 }

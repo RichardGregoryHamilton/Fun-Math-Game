@@ -1,0 +1,57 @@
+h1 {
+  background: -webkit-linear-gradient(red, yellow);
+  background: -o-linear-gradient(red, yellow);
+  background: -moz-linear-gradient(red, yellow);
+  background: linear-gradient(red, yellow);
+  text-align: center;
+}
+
+.exp1 {
+  float: left;
+  width: 15%;
+}
+
+.exp2 {
+  float: right;
+  width: 15%;
+}
+
+#new-game {
+  position: fixed;
+  margin-top: 16%;
+  padding: 5px 10px;
+  background: blue;
+  color: white;
+}
+
+.game-block {
+    margin: 16% 0;
+}
+
+.game-info {
+  position: fixed;
+}
+
+.controls {
+  position: fixed;
+  margin-top: 30px;
+}
+
+.greaterThan, .equals, .lessThan {
+  margin: 30px 10px;
+  padding: 5px 10px;
+  color: white;
+  font-weight: bold;
+}
+
+.greaterThan {
+  background: green;
+}
+
+.equals {
+  background: yellow;
+}
+
+.lessThan {
+  background: red;
+}
