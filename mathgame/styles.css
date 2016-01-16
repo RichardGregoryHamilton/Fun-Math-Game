@@ -1,9 +1,18 @@
+body {
+  background: #4CAF50;
+}
+
+main {
+  margin-left: 5%;
+}
+
 h1 {
   background: -webkit-linear-gradient(red, yellow);
   background: -o-linear-gradient(red, yellow);
   background: -moz-linear-gradient(red, yellow);
   background: linear-gradient(red, yellow);
   text-align: center;
+  margin-top: -1.5%;
 }
 
 .exp1 {
@@ -17,34 +26,38 @@ h1 {
 }
 
 .game-btn {
-  position: fixed;
   padding: 5px 10px;
   color: white;
 }
 
+.options {
+  margin-top: 8%;
+  position: fixed;
+}
+
 #new-game {
-  margin-top: 16%;
   background: blue;
 }
 
 #help {
-  position: fixed;
-  margin-top: 21%;
-  color: white;
   background: green;
+}
+
+#achievements {
+  background: orange;
+}
+
+#top-scores {
+  background: red;
 }
 
 #game-help {
   position: fixed;
-  margin-top: 27%;
+  margin-top: 12%;
 }
 
 .game-block {
   margin: 16% 0;
-}
-
-.game-info {
-  position: fixed;
 }
 
 .controls {

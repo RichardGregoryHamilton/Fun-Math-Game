@@ -1,0 +1,75 @@
+<head>
+  <title>Math Game</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" href="styles.css"></link>
+</head>
+
+<body>
+
+  <header class="navbar navbar-static-top navbar-inverse" id="top" role="banner">
+    <div class="container">
+      <div class="navbar-header">
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse"> 
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button> 
+        <a href="#" class="navbar-brand">Firebase login</a>
+
+      </div>
+      <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="#/">Login</a>
+          </li>
+          <li>
+            <a href="#/logout">Logout</a>
+          </li>
+          <li>
+            <a href="#/register">Register</a>
+          </li>
+          <li> 
+            <a href="#/profile">Profile</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+    <h1>Math Game</h1>
+  <main>
+    <div class="game-info">
+      <p id="level">
+        <span id="score"></span>
+        <span id="high-score"></span>
+      </p>
+    </div>
+
+    <div class="game-block"></div>
+
+    <div class="controls"></div>
+    
+    <div class="options">
+      <button class="game-btn" id="new-game" onclick="startGame()">New Game</button>
+      <button class="game-btn" id="help" onclick="showRules()">How To Play</button>
+      <button class="game-btn" id="achievements">Achievements</button>
+      <button class="game-btn" id="top-scores">Top Scores</button>
+    </div>
+    
+    <div id="game-help">
+      <p>In this math game, you are given two expressions.</p>
+      <p>Your goal is to compare the two expressions</p>
+      <p> If the left expression is greater than the one on the right, press the left button</p>
+      <p>If the two expressions are equal, press the equals button</p>
+      <p>If the expression on the left is less than the expression on the right, press the right button</p>
+    </div>
+  
+  </main>
+  <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src="math.js"></script>
+  
+  <script src="authentication.js"></script>
+</body>

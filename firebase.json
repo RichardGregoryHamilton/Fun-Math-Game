@@ -1,0 +1,9 @@
+{
+  "firebase": "funmathgame",
+  "public": "mathgame",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
