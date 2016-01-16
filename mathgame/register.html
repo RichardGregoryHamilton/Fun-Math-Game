@@ -1,28 +1,10 @@
 <head>
-  <title>Math Game</title>
+  <title>Create an Account</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"></link>
   <link rel="stylesheet" href="styles.css"></link>
 </head>
 
 <body>
-
-  <script>
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId      : '754606401339742',
-        xfbml      : true,
-        version    : 'v2.5'
-      });
-    };
-
-    (function(d, s, id){
-       var js, fjs = d.getElementsByTagName(s)[0];
-       if (d.getElementById(id)) {return;}
-       js = d.createElement(s); js.id = id;
-       js.src = "//connect.facebook.net/en_US/sdk.js";
-       fjs.parentNode.insertBefore(js, fjs);
-     }(document, 'script', 'facebook-jssdk'));
-  </script>
 
   <header>
     <nav class="navbar navbar-static-top navbar-inverse" id="top" role="banner">
@@ -34,7 +16,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button> 
-          <a href="#" class="navbar-brand">Fun Math Game</a>
+          <a href="index.html" class="navbar-brand">Fun Math Game</a>
 
         </div>
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
@@ -48,37 +30,28 @@
       </div>
     </nav>
   </header>
- 
-  <h1 class="text-center">Math Game</h1>
   
   <main>
-    <div class="game-info">
-      <p id="level">
-        <span id="score"></span>
-        <span id="high-score"></span>
-      </p>
+  <form id="frmRegister" role="form">
+    <h2 class="text-center">Register</h2>
+
+    <div class="form-group">
+      <label for="txtRegEmail">Email address</label>
+      <input type="email" class="form-control" id="txtEmail" placeholder="Enter email" name="email" />
     </div>
-
-    <div class="game-block"></div>
-
-    <div class="controls"></div>
-    
-    <div class="options">
-      <button class="game-btn" id="new-game" onclick="startGame()">New Game</button>
-      
-        <a class="game-btn" id="help" href="help.html">How To Play</a>
-        <a class="game-btn" id="achievements" href="achievements.html">Achievements</a>
-      <button class="game-btn" id="top-scores">Top Scores</button>
+    <div class="form-group">
+      <label for="txtRegPass">Password</label>
+      <input type="password" class="form-control" id="txtPass" placeholder="Password" name="password" />
     </div>
-  
-  <div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div>
-
+    <button type="submit" class="btn btn-primary">Register</button>
+  </form>
   </main>
+  
   <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   <script src="math.js"></script>
   
   <script src="authentication.js"></script>
-
+  
 </body>

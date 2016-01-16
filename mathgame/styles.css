@@ -1,9 +1,10 @@
+/* General Rules */
 body {
   background: #4CAF50;
 }
 
 main {
-  margin-left: 5%;
+  margin: 0 5%;
 }
 
 h1 {
@@ -11,8 +12,24 @@ h1 {
   background: -o-linear-gradient(red, yellow);
   background: -moz-linear-gradient(red, yellow);
   background: linear-gradient(red, yellow);
-  text-align: center;
   margin-top: -1.5%;
+}
+
+table {
+  width: 70%;
+  margin: 0 auto;
+}
+
+td {
+  padding: 20px 5px;
+}
+
+button a {
+  color: white;
+}
+
+button a:hover {
+  text-decoration: none;
 }
 
 .exp1 {
@@ -35,25 +52,20 @@ h1 {
   position: fixed;
 }
 
-#new-game {
-  background: blue;
-}
+/* Selectors for coloring */
 
-#help {
-  background: green;
-}
+#new-game { background: blue; }
+#help { background: green; }
+#achievements { background: orange; }
+#top-scores { background: red; }
 
-#achievements {
-  background: orange;
-}
-
-#top-scores {
-  background: red;
-}
+.greaterThan { background: green; }
+.equals { background: gold; }
+.lessThan { background: red; }
 
 #game-help {
   position: fixed;
-  margin-top: 12%;
+  margin: 5% 10%;
 }
 
 .game-block {
@@ -65,6 +77,7 @@ h1 {
   margin-top: 30px;
 }
 
+/* Game buttons */
 .greaterThan, .equals, .lessThan {
   margin: 30px 10px;
   padding: 5px 10px;
@@ -72,18 +85,7 @@ h1 {
   font-weight: bold;
 }
 
-.greaterThan {
-  background: green;
-}
-
-.equals {
-  background: gold;
-}
-
-.lessThan {
-  background: red;
-}
-
+/* Game information */
 #level {
   white-space: nowrap;
 }
@@ -91,4 +93,15 @@ h1 {
 #score, #high-score {
   margin-left: 10%;
   font-weight: bold;
+}
+
+/* social */
+.fb-like {
+  margin-top: 20%;
+  position: fixed;
+}
+
+/* Prevents the widget from jumping all over the place */
+.fb_iframe_widget {
+  position: fixed; !important
 }

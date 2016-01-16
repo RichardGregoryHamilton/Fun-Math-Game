@@ -9,8 +9,6 @@ var scores = [0];
 var colors = ["red", "orange", "gold", "green", "lightblue"];
 var operators = ["+", "-", "*", "/"];
 
-$("#game-help").hide();
-
 // These functions return random numbers based on the level
 function randEasy() {
     return Math.floor(Math.random() * 10);
@@ -168,10 +166,6 @@ function endGame() {
     $(".exp1, .exp2, .lessThan, .equals, .greaterThan").remove();
     scores.push(score);
     gameStart = false;
-}
-
-function showRules() {
-    $("#game-help").toggle();
 }
 
 // This starts the five second clock where you must make a move
