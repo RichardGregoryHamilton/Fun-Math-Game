@@ -23,6 +23,7 @@ table {
 tr {
   border: 3px solid black;
 }
+
 td {
   padding: 20px 15px;
 }
@@ -43,6 +44,35 @@ button a:hover {
   text-decoration: none;
 }
 
+.options {
+  margin-top: 8%;
+  position: fixed;
+}
+
+.exp-left {
+  float: left;
+  width: 15%;
+}
+
+/* Selectors for coloring */
+
+#new-game { background: blue; }
+#help { background: green; }
+#achievements { background: orange; }
+#top-scores { background: red; }
+
+/* How To Play */
+
+#game-help {
+  position: fixed;
+  margin: 5% 30%;
+}
+
+.exp-block {
+  margin-top: 20px;
+  margin-bottom: 70px;
+}
+
 .exp1 {
   float: left;
   width: 15%;
@@ -53,50 +83,21 @@ button a:hover {
   width: 15%;
 }
 
-.exp-block {
-  margin-bottom: 50px;
-}
-
-.options {
-  margin-top: 8%;
-  position: fixed;
-}
-
-/* Selectors for coloring */
-
-#new-game { background: blue; }
-#help { background: green; }
-#achievements { background: orange; }
-#top-scores { background: red; }
-
-.greaterThan { background: green; }
-.equals { background: gold; }
-.lessThan { background: red; }
-
-#game-help {
-  position: fixed;
-  margin: 5% 10%;
-}
-
 .questions-block {
-	margin: 3% 20%;
+  margin: 3% 20%;
 }
 
-.exp-left {
-	float: left;
-	width: 15%;
+#game-block {
+  margin: 14% 0;
 }
 
-.game-block {
-  margin: 16% 0;
-}
-
-.controls {
+#controls {
   position: fixed;
   margin-top: 30px;
 }
 
 /* Game buttons */
+
 .greaterThan, .equals, .lessThan {
   margin: 30px 10px;
   padding: 5px 10px;
@@ -104,7 +105,12 @@ button a:hover {
   font-weight: bold;
 }
 
+.greaterThan { background: green; }
+.equals { background: gold; }
+.lessThan { background: red; }
+
 /* Game information */
+
 .notification {
   min-height: 50px;
   background: gold;
@@ -124,6 +130,8 @@ button a:hover {
   font-weight: bold;
 }
 
+/* achievements */
+
 .locked {
   background: #888888;
 }
@@ -132,16 +140,15 @@ button a:hover {
   background: #FFCC00;
 }
 
-/* assets */
-
 .achievement-img {
   height: 60px;
   width: 60px;
   border-radius: 50%;
 }
+
 /* social */
 
 #fb-container {
-  margin-top: 20%;
+  margin-top: 14%;
   position: fixed;
 }

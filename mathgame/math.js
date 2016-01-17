@@ -1,12 +1,11 @@
-var gameBlock = document.getElementsByClassName("game-block")[0];
-
 var gameStart = false;
 var score = 0;
 var level = 1;
 
 var scores = [0];
 var achievements = [];
-var colors = ["red", "orange", "gold", "green", "lightblue"];
+var colors = ["#FF0000", "#660000", "#FF3300", "#FF9900", "#003300",
+              "#000033", "#660033", "#FF0033", "#383838"];
 var operators = ["+", "-", "*", "/"];
 
 /* This function stores a user's achievements over the length of a session */
@@ -55,53 +54,45 @@ $(".example").each(function() {
 });
 
 function generateExpressions() {
-    var exp1 = document.createElement("div");
-    var exp2 = document.createElement("div");
-
-    [exp1, exp2].forEach(function(exp,index) {
-        exp.classList.add("exp" + (index + 1));
-        exp.style.color = "white";
-        exp.style.background = randColor();
-        exp.style.textAlign = "center";
-        exp.style.padding = "8px 0";
-        gameBlock.appendChild(exp);
-
-        // The expressions generated depend on the level. This is an arcade game
+    $("#game-block").append("<div class='exp1'>");
+    $("#game-block").append("<div class='exp2'>");
+    
+    $(".exp1, .exp2").each(function() {
+        $(this).css({ "color": "white",
+                      "background": randColor(),
+                      "text-align": "center",
+                      "padding": "8px 0" });
+                      
         if (level == 1) {
-            exp.innerHTML = "" + randEasy() + " + " + randEasy();
+            $(this).html('' + randEasy() + ' + ' + randEasy());
         }
         else if (level == 2 || level == 3) {
-            exp.innerHTML = "" + randMed() + " + " + randMed();
+            $(this).html('' + randMed() + ' + ' + randMed());
         }
         else if (level == 4 || level == 5) {
-            exp.innerHTML = "" + randHard() + " + " + randHard();
+            $(this).html('' + randHard() + ' + ' + randHard());
         }
         else if (level == 6 || level == 7) {
-            exp.innerHTML = "" + randHard() + randOperation() + randHard();
+            $(this).html('' + randHard() + randOperation() + randHard());
         }
         else {
-            exp.innerHTML = "" + randExtreme() + randOperation() +
-            randExtreme();
+            $(this).html('' + randExtreme() + randOperation() + randExtreme());
         }
     });
-
 }
 
 // Creates the buttons
 function createButtons() {
-    $(".controls").append("<button class='greaterThan'>" + ">" + "</button>");
-    $(".controls").append("<button class='equals'>=</button>")
-    $(".controls").append("<button class='lessThan'>" + "<" + "</button>")
+    $("#controls").append("<button class='greaterThan'>" + ">" + "</button>");
+    $("#controls").append("<button class='equals'>=</button>")
+    $("#controls").append("<button class='lessThan'>" + "<" + "</button>")
 }
 
 // Update the score, remove expressions and generate new ones. Check for level increase
 function incrementScore() {
     score++;
-    $("#level").html("<strong>Level: </strong>" + level + "<span id='score'>Score: " +
-    score + "</span><span id='high-score'> High Score: " + highScore() + "</span>");
     $(".exp1, .exp2").remove();
-    generateExpressions();
-    animateDivs();
+    gameLoop();
     incrementLevel();
 }
 
@@ -173,36 +164,10 @@ function addScores() {
     }
 }
 
-// There are multiple conditionals so a switch statement works best here
 function incrementLevel() {
-    switch(true) {
-        case (score < 10):
-            level = 1;
-            addAchievement(1);
-            break;
-        case (score >= 10 && score < 20):
-            level = 2;
-            addAchievement(2);
-            break;
-        case (score >= 20 && score < 30):
-            level = 3;
-            addAchievement(3);
-            break;
-        case (score >= 30 && score < 40):
-            level = 4;
-            addAchievement(4);
-            break;
-        case (score >= 40 && score < 50):
-            level = 5;
-            addAchievement(5);
-            break;
-         case (score >= 50):
-            level = 6;
-            addAchievement(6);
-            break;
-     }
-     $("#level").html("<strong>Level: </strong>" + level + "<span id='score'>Score: " +
-     score + "</span><span id='high-score'> High Score: " + highScore() + "</span>");
+    level = Math.ceil(score / 10);
+    addAchievement(level);
+    updateStats();
 }
 
 // Functions for each of the three choices
@@ -224,19 +189,31 @@ $("body").on("click", ".greaterThan", function() {
     (num1 > num2) ? incrementScore() : endGame();
 });
 
+function updateStats() {
+    $("#level").html("<strong>Level: </strong>" + level + "<span id='score'>Score: " +
+    score + "</span><span id='high-score'> High Score: " + highScore() + "</span>");
+}
+
+function gameLoop() {
+    generateExpressions();
+    animateDivs();
+    updateStats();
+}
+
+function resetGame() {
+    gameStart = true;
+    score = 0;
+    level = 1;
+    gameLoop();
+    createButtons();
+}
+
 function startGame() {
     if (gameStart) {
         return false;
     }
     else {
-        gameStart = true;
-        score = 0;
-        level = 1;
-        generateExpressions();
-        animateDivs();
-        $("#level").html("<strong>Level: </strong>" + level + "<span id='score'>Score: " +
-        score + "</span><span id='high-score'> High Score: " + highScore() + "</span>");
-        createButtons();
+        resetGame();
     }
 }
 
@@ -260,8 +237,8 @@ function animateDivs() {
     $(".exp2").animate( { "marginRight": "70%" }, 5000);
     var previousScore = score;
     setTimeout(function() {
-    if (score == previousScore) {
-        endGame()
-    }
-  }, 5000);
+        if (score == previousScore) {
+            endGame()
+        }
+    }, 5000);
 }
