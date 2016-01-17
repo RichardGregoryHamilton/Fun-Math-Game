@@ -16,4 +16,4 @@ A fun math arcade game written in jQuery
 * `Levels 6 - 7`: Mathematical expressions now involve subtraction, multiplication or division
 * `Levels 8+`: It's next to impossible to reach this level without cheating
 
-Link: https://jsfiddle.net/mypkktu7/2/
+Link: https://funmathgame.firebaseapp.com
