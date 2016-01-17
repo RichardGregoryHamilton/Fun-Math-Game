@@ -44,7 +44,7 @@ button a:hover {
   text-decoration: none;
 }
 
-.options {
+#options {
   margin-top: 8%;
   position: fixed;
 }
@@ -111,7 +111,7 @@ button a:hover {
 
 /* Game information */
 
-.notification {
+#notification {
   min-height: 50px;
   background: gold;
   font-weight: bold;
