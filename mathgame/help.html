@@ -1,51 +1,64 @@
 <head>
-	<title>Math Game</title>
+  <title>Math Game</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"></link>
   <link rel="stylesheet" href="styles.css"></link>
 </head>
 
 <body>
-	
-	<header>
-		<nav class="navbar navbar-static-top navbar-inverse" id="top" role="banner">
-			<div class="container">
-				<div class="navbar-header">
-					<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse"> 
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button> 
-					<a href="index.html" class="navbar-brand">Fun Math Game</a>
+  
+  <header>
+    <nav class="navbar navbar-static-top navbar-inverse" id="top" role="banner">
+      <div class="container">
+        <div class="navbar-header">
+          <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse"> 
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button> 
+          <a href="index.html" class="navbar-brand">Fun Math Game</a>
 
-				</div>
-				<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-					<ul class="nav navbar-nav">
-						<li><a href="#/">Login</a></li>
-						<li><a href="#/logout">Logout</a></li>
-						<li><a href="register.html">Register</a></li>
-						<li><a href="#/profile">Profile</a></li>
-					</ul>
-				</nav>
-			</div>
-		</nav>
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+          <ul class="nav navbar-nav">
+            <li><a href="help.html">Help</a></li>
+            <li><a href="achievements.html">Achievements</a></li>
+            <li><a href="scores.html">Scores</a></li>
+            <li><a href="faq.html">FAQs</a></li>
+          </ul>
+        </nav>
+      </div>
+    </nav>
   </header>
-	
-	<h1 class="text-center">How To Play</h1>
-	
-	<div id="game-help">
-		<p>In this math game, you are given two expressions.</p>
-		<p>Your goal is to compare the two expressions</p>
-		<p> If the left expression is greater than the one on the right, press the left button</p>
-		<p>If the two expressions are equal, press the equals button</p>
-		<p>If the expression on the left is less than the expression on the right, press the right button</p>
-	</div>
-	
-	<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+  
+  <h1 class="text-center">How To Play</h1>
+  
+  <div id="game-help">
+    <p>In this math game, you are given two expressions.</p>
+    <p>Your goal is to compare the two expressions</p>
+    <div class="exp-block">
+      <div class="exp1 example">4 + 5</div>
+      <div class="exp2 example">1 + 3</div>
+    </div>
+    
+    <p>In this case the first expression is greater, so you would click the greater than button</p>
+    <div class="exp-block">
+      <div class="exp1 example">2 + 4</div>
+      <div class="exp2 example">5 + 1</div>
+    </div>
+    <p> Here, both expressions equal 6. You click on the equals button</p>
+    <div class="exp-block">
+      <div class="exp1 example">2 + 1</div>
+      <div class="exp2 example">3 + 7</div>
+    </div>
+    
+    <p>The left hand expression is lower than the right hand expression. Click less than</p>
+
+  </div>
+  
+  <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   <script src="math.js"></script>
   
-  <script src="authentication.js"></script>
-	
 </body>

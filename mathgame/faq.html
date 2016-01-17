@@ -1,11 +1,10 @@
 <head>
-  <title>Create an Account</title>
+  <title>Frequently Asked Questions</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"></link>
   <link rel="stylesheet" href="styles.css"></link>
 </head>
 
 <body>
-
   <header>
     <nav class="navbar navbar-static-top navbar-inverse" id="top" role="banner">
       <div class="container">
@@ -21,37 +20,40 @@
         </div>
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
           <ul class="nav navbar-nav">
-            <li><a href="#/">Login</a></li>
-            <li><a href="#/logout">Logout</a></li>
-            <li><a href="register.html">Register</a></li>
-            <li><a href="#/profile">Profile</a></li>
+            <li><a href="help.html">Help</a></li>
+            <li><a href="achievements.html">Achievements</a></li>
+            <li><a href="scores.html">Scores</a></li>
+            <li><a href="faq.html">FAQs</a></li>
           </ul>
         </nav>
       </div>
     </nav>
   </header>
-  
-  <main>
-  <form id="frmRegister" role="form">
-    <h2 class="text-center">Register</h2>
 
-    <div class="form-group">
-      <label for="txtRegEmail">Email address</label>
-      <input type="email" class="form-control" id="txtEmail" placeholder="Enter email" name="email" />
-    </div>
-    <div class="form-group">
-      <label for="txtRegPass">Password</label>
-      <input type="password" class="form-control" id="txtPass" placeholder="Password" name="password" />
-    </div>
-    <button type="submit" class="btn btn-primary">Register</button>
-  </form>
-  </main>
+  <h1 class="text-center">Frequently Asked Questions</h1>
+  
+  <div class="questions-block">
+    <h3>Question 1: What is this game?</h3>
+    <p>Answer: This is an arcade style math game.</p>
+    
+    <h3>Question 2: How do you score points?</h3>
+    <p>Answer: You score points by solving mathematical expressions. You have
+    three choices, and must select the correct one</p>
+    
+    <h3>Question 3: Do you have to create an account?</h3>
+    <p>Answer: No. Best of all, this game can be played without signing up.</p>
+    
+    <h3>Question 4: Do you have to pay to play this game?</h3>
+    <p>Answer: Unlike most games, this one is completely free.</p>
+  </div>
+  
+  <footer>
+    <p class="text-center">Written by Richard G. Hamilton - Front End Web Developer</p>
+  </footer>
   
   <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   <script src="math.js"></script>
-  
-  <script src="authentication.js"></script>
   
 </body>

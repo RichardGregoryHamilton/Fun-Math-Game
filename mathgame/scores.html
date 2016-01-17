@@ -5,25 +5,7 @@
 </head>
 
 <body>
-  <!-- Bug is possibly found here -->
-  <script>
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId      : '754606401339742',
-        xfbml      : true,
-        version    : 'v2.5'
-      });
-    };
-
-    (function(d, s, id){
-       var js, fjs = d.getElementsByTagName(s)[0];
-       if (d.getElementById(id)) {return;}
-       js = d.createElement(s); js.id = id;
-       js.src = "//connect.facebook.net/en_US/sdk.js";
-       fjs.parentNode.insertBefore(js, fjs);
-     }(document, 'script', 'facebook-jssdk'));
-  </script>
-
+  
   <header>
     <nav class="navbar navbar-static-top navbar-inverse" id="top" role="banner">
       <div class="container">
@@ -48,42 +30,37 @@
       </div>
     </nav>
   </header>
- 
-  <h1 class="text-center">Math Game</h1>
   
-  <main>
-    <div class="notification"></div>
-    <div class="game-info">
-      <p id="level">
-        <span id="score"></span>
-        <span id="high-score"></span>
-      </p>
-    </div>
-
-    <div class="game-block"></div>
-
-    <div class="controls"></div>
-    
-    <div class="options">
-      <button class="btn btn-primary" id="new-game" onclick="startGame()">New Game</button>  
-      <a class="btn btn-success" id="help" href="help.html">How To Play</a>
-      <a class="btn btn-warning" id="achievements" href="achievements.html">Achievements</a>
-      <a class="btn btn-danger" id="top-scores" href="scores.html">Top Scores</a>
-    </div>
-
-    <div id="fb-container">
-      <div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div>
-    </div>
+  <h1 class="text-center">High Scores Table</h1>
   
-  </main>
-  
-  <footer>
-    <p class="text-center">Written by Richard G. Hamilton - Front End Web Developer</p>
-  </footer>
+  <div class="achievements">
+    <table id="scores-table">
+      <tr>
+        <td><strong>Rank 1</strong></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><strong>Rank 2</strong></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><strong>Rank 3</strong></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><strong>Rank 4</strong></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><strong>Rank 5</strong></td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
   
   <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   <script src="math.js"></script>
-
+  
 </body>

@@ -17,12 +17,23 @@ h1 {
 
 table {
   width: 70%;
-  margin: 0 auto;
+  margin: 5% auto;
 }
 
-td {
-  padding: 20px 5px;
+tr {
+  border: 3px solid black;
 }
+td {
+  padding: 20px 15px;
+}
+
+footer {
+  background: #CC6699;
+  margin-top: 33%;
+  padding-top: 1%;
+  height: 6.5%;
+}
+
 
 button a {
   color: white;
@@ -42,9 +53,8 @@ button a:hover {
   width: 15%;
 }
 
-.game-btn {
-  padding: 5px 10px;
-  color: white;
+.exp-block {
+  margin-bottom: 50px;
 }
 
 .options {
@@ -68,6 +78,15 @@ button a:hover {
   margin: 5% 10%;
 }
 
+.questions-block {
+	margin: 3% 20%;
+}
+
+.exp-left {
+	float: left;
+	width: 15%;
+}
+
 .game-block {
   margin: 16% 0;
 }
@@ -86,6 +105,16 @@ button a:hover {
 }
 
 /* Game information */
+.notification {
+  min-height: 50px;
+  background: gold;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  padding: 10px 5px;
+  width: 45%;
+}
+
 #level {
   white-space: nowrap;
 }
@@ -95,13 +124,24 @@ button a:hover {
   font-weight: bold;
 }
 
-/* social */
-.fb-like {
-  margin-top: 20%;
-  position: fixed;
+.locked {
+  background: #888888;
 }
 
-/* Prevents the widget from jumping all over the place */
-.fb_iframe_widget {
-  position: fixed; !important
+.unlocked {
+  background: #FFCC00;
+}
+
+/* assets */
+
+.achievement-img {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+}
+/* social */
+
+#fb-container {
+  margin-top: 20%;
+  position: fixed;
 }
