@@ -44,6 +44,20 @@ button a:hover {
   text-decoration: none;
 }
 
+/* Header */
+
+#fun {
+    color: red;
+}
+
+#math {
+    color: darkorange;
+}
+
+#game {
+    color: gold;
+}
+
 #options {
   margin-top: 8%;
   position: fixed;
@@ -130,7 +144,7 @@ button a:hover {
   font-weight: bold;
 }
 
-/* achievements */
+/* Achievements */
 
 .locked {
   background: #888888;
@@ -146,7 +160,13 @@ button a:hover {
   border-radius: 50%;
 }
 
-/* social */
+/* Scores */
+
+.gold { background: gold; }
+.silver { background: silver; }
+.bronze { background: #8C7853 }
+
+/* Social */
 
 #fb-container {
   margin-top: 14%;

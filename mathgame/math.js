@@ -9,13 +9,15 @@ var colors = ['#FF0000', '#660000', '#FF3300', '#FF9900', '#003300',
 var operators = ['+', '-', '*', '/'];
 
 /* This function stores a user's achievements over the length of a session */
-if (!localStorage['achievements']) {
-    localStorage['achievements'] = JSON.stringify([]);
+
+function checkStorage(key) {
+	if(!localStorage[key]) {
+		localStorage[key] = JSON.stringify([]);
+	}
 }
 
-if (!localStorage['scores']) {
-    localStorage['scores'] = JSON.stringify([]);
-}
+checkStorage('achievements');
+checkStorage('scores');
 
 /* Hides achievement notifications at the start of games */
 $('#notification').css({ 'visibility': 'hidden' });
@@ -150,40 +152,44 @@ function updateAchievements() {
     });
 }
 
-// This function adds achievements indefinitely
-function addAchievement(i) {
-    var userAchievements = JSON.parse(localStorage['achievements']);
-    var sessionAchievements = JSON.stringify(achievements);
 
-    if (userAchievements.length == (i - 1)) {
-        achievements.push('level' + i);
-        if (userAchievements.length > achievements.length) {
-            localStorage['achievements'] = localStorage['achievements'].replace(']', '') +
-            (',' + sessionAchievements.replace('[', ''));
-        }
-        else {
-            localStorage['achievements'] = sessionAchievements;
-        }
-        $('#notification').html('You have unlocked the achievement ' + achievements[achievements.length - 1]);
-        $('#notification').css({ 'visibility': 'visible' });
-        setTimeout(function() {
-            $('#notification').css({ 'visibility': 'hidden' });
-        }, 5000);
-    }
-
+// Remove duplicate values from an array. Useful for localStorage
+function makeUnique(array) {
+    return array.filter(function(element, index) {
+        return array.indexOf(element) == index;
+    });
 }
 
-function addScores() {
-    scores.push(score);
-    var userScores = JSON.parse(localStorage['scores']);
-    var sessionScores = JSON.stringify(scores);
-    if (userScores.length > scores.length) {
-        localStorage['scores'] = localStorage['scores'].replace(']', '') +
-        (',' + sessionScores.replace('[', ''));
+function showAchievement() {
+	$('#notification').html('You have unlocked the achievement ' + achievement);
+    $('#notification').css({ 'visibility': 'visible' });
+    setTimeout(function() {
+        $('#notification').css({ 'visibility': 'hidden' });
+    }, 5000);
+}
+
+function addAchievement(level) {
+    var oldAchievements = JSON.parse(localStorage['achievements']);
+    var achievement = 'level' + level;
+
+    if (achievements.indexOf(achievement) == -1 && oldAchievements.indexOf(achievement) == -1) {
+        achievements.push(achievement);
+        showAchievement();
     }
-    else {
-        localStorage['scores'] = sessionScores;;
+
+    var newAchievements = oldAchievements.concat(achievements);
+    newAchievements = makeUnique(newAchievements);
+    localStorage["achievements"] = JSON.stringify(newAchievements);
+}
+function addScore() {
+    if (scores.indexOf(score) == -1) {
+        scores.push(score);
     }
+	
+    var oldScores = JSON.parse(localStorage['scores']);
+    var newScores = oldScores.concat(scores);
+    newScores = makeUnique(newScores);
+    localStorage['scores'] = JSON.stringify(newScores);
 }
 
 function incrementLevel() {
@@ -233,17 +239,9 @@ function startGame() {
     }
 }
 
-// Fill in the High Scores table
-$('#scores-table td:last-child').each(function(index) {
-    var userScores = JSON.parse(localStorage['scores']).sort(function(scoreA,scoreB) {
-        return scoreB - scoreA;
-    });
-    $(this).html(userScores[index] || '');
-});
-
 function endGame() {
     $('.exp1, .exp2, .lessThan, .equals, .greaterThan').remove();
-    addScores();
+    addScore();
     updateAchievements();
     gameStart = false;
 }
