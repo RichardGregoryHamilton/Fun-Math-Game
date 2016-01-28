@@ -1,6 +1,6 @@
 /* This JavaScript file is for dealing with scores */
 
-$(".my-header").load('header.html');
+$('#my-header').load('header.html');
 
 var oldScores = JSON.parse(localStorage['mathScores']);
 

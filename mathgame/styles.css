@@ -1,4 +1,5 @@
 /* General Rules */
+
 body {
   background: #4CAF50;
 }
@@ -30,9 +31,11 @@ td {
 
 footer {
   background: #CC6699;
-  margin-top: 33%;
+  bottom: 0;
+  position: fixed;
   padding-top: 1%;
   height: 6.5%;
+  width: 100%;
 }
 
 
@@ -46,17 +49,9 @@ button a:hover {
 
 /* Header */
 
-#fun {
-    color: red;
-}
-
-#math {
-    color: darkorange;
-}
-
-#game {
-    color: gold;
-}
+#fun { color: red; }
+#math { color: darkorange; }
+#game { color: gold; }
 
 #options {
   margin-top: 8%;
@@ -97,8 +92,11 @@ button a:hover {
   width: 15%;
 }
 
-.questions-block {
+#questions-block {
   margin: 3% 20%;
+  background: burlywood;
+  padding: 2% 5%;
+  border: 3px solid purple;
 }
 
 #game-block {
@@ -112,16 +110,16 @@ button a:hover {
 
 /* Game buttons */
 
-.greaterThan, .equals, .lessThan {
+.greater-than, .equals, .less-than {
   margin: 30px 10px;
   padding: 5px 10px;
   color: white;
   font-weight: bold;
 }
 
-.greaterThan { background: green; }
+.greater-than { background: green; }
 .equals { background: gold; }
-.lessThan { background: red; }
+.less-than { background: red; }
 
 /* Game information */
 
@@ -133,6 +131,7 @@ button a:hover {
   text-align: center;
   padding: 10px 5px;
   width: 45%;
+  visibility: hidden;
 }
 
 #level {
@@ -146,13 +145,10 @@ button a:hover {
 
 /* Achievements */
 
-.locked {
-  background: #888888;
-}
-
-.unlocked {
-  background: #FFCC00;
-}
+.locked { background: #888888; }
+.locked:hover { background: dimgray; }
+.unlocked { background: #FFCC00; }
+.unlocked:hover { background: goldenrod; }
 
 .achievement-img {
   height: 60px;
@@ -164,7 +160,7 @@ button a:hover {
 
 .gold { background: gold; }
 .silver { background: silver; }
-.bronze { background: #8C7853 }
+.bronze { background: #8C7853; }
 
 /* Social */
 
@@ -172,3 +168,15 @@ button a:hover {
   margin-top: 14%;
   position: fixed;
 }
+
+/* Related */
+
+.game-section {
+  width: 50%;
+  margin: 0 auto;
+}
+
+#shapes { color: chocolate; }
+#header-game { color: maroon; }
+#snake { color: magenta; }
+#online { color: chartreuse; }

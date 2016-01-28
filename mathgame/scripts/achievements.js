@@ -1,6 +1,6 @@
 /* This JavaScript file deals with achievements */
 
-$('.my-header').load('header.html');
+$('#my-header').load('header.html');
 
 var allScoreAchievements = [{ 'name': 'score100', 'value': 100 },
                             { 'name': 'score200', 'value': 200 },

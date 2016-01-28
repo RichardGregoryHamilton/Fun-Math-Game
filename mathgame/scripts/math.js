@@ -1,3 +1,5 @@
+$('#my-header').load('header.html');
+
 var gameStart = false;
 var score = 0;
 var level = 1;
@@ -27,16 +29,11 @@ if (!localStorage['mathTotalScore']) {
     localStorage['mathTotalScore'] = 0;
 }
 
-$('.my-header').load('header.html');
-
-/* Hides achievement notifications at the start of games */
-$('#notification').css({ 'visibility': 'hidden' });
-
 // Creates the buttons
 function createButtons() {
-    $('#controls').append("<button class='greaterThan'>" + ">" + "</button>");
+    $('#controls').append("<button class='greater-than'>" + ">" + "</button>");
     $('#controls').append("<button class='equals'>=</button>")
-    $('#controls').append("<button class='lessThan'>" + "<" + "</button>")
+    $('#controls').append("<button class='less-than'>" + "<" + "</button>")
 }
 
 function incrementLevel() {
@@ -46,7 +43,7 @@ function incrementLevel() {
 }
 
 // Functions for each of the three choices
-$('body').on('click', '.lessThan', function() {
+$('body').on('click', '.less-than', function() {
     $('.exp1').data('result') < $('.exp2').data('result') ? incrementScore() : endGame();
 });
 
@@ -54,7 +51,7 @@ $('body').on('click', '.equals', function() {
     $('.exp1').data('result') == $('.exp2').data('result') ? incrementScore() : endGame();
 });
 
-$('body').on('click', '.greaterThan', function() {
+$('body').on('click', '.greater-than', function() {
     $('.exp1').data('result') > $('.exp2').data('result') ? incrementScore() : endGame();
 });
 
