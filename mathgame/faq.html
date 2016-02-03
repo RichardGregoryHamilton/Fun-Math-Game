@@ -1,38 +1,41 @@
-<head>
-  <title>Frequently Asked Questions</title>
-  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'></link>
-  <link rel='stylesheet' href='styles.css'></link>
-</head>
+<html ng-app='my-app'>
 
-<body>
-  <header id='my-header'>
+  <head>
+    <title>Frequently Asked Questions</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'></link>
+    <link rel='stylesheet' href='assets/stylesheets/styles.css'></link>
+  </head>
 
-  </header>
+  <body>
+    
+    <ng-include src="'header.html'"></ng-include>
 
-  <h1 class='text-center'>Frequently Asked Questions</h1>
+    <h1 class='text-center'>Frequently Asked Questions</h1>
 
-  <div id='questions-block'>
-    <h3>Question 1: What is this game?</h3>
-    <p>Answer: This is an arcade style math game.</p>
+    <div id='questions-block'>
+      <h3>Question 1: What is this game?</h3>
+      <p>Answer: This is an arcade style math game.</p>
 
-    <h3>Question 2: How do you score points?</h3>
-    <p>Answer: You score points by solving mathematical expressions. You have
-    three choices, and must select the correct one</p>
+      <h3>Question 2: How do you score points?</h3>
+      <p>Answer: You score points by solving mathematical expressions. You have
+      three choices, and must select the correct one</p>
 
-    <h3>Question 3: Do you have to create an account?</h3>
-    <p>Answer: No. Best of all, this game can be played without signing up.</p>
+      <h3>Question 3: Do you have to create an account?</h3>
+      <p>Answer: No. Best of all, this game can be played without signing up.</p>
 
-    <h3>Question 4: Do you have to pay to play this game?</h3>
-    <p>Answer: Unlike most games, this one is completely free.</p>
-  </div>
+      <h3>Question 4: Do you have to pay to play this game?</h3>
+      <p>Answer: Unlike most games, this one is completely free.</p>
+    </div>
 
-  <footer>
-    <p class='text-center'>Written by Richard G. Hamilton - Front End Web Developer</p>
-  </footer>
+    <ng-include src="'footer.html'"></ng-include>
 
-  <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
-  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
-  <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
-  <script src='scripts/math.js'></script>
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
+    <script src='scripts/app.js'></script>
+    <script src='scripts/controllers/navController.js'></script>
 
-</body>
+  </body>
+  
+</html>

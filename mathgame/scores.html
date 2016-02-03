@@ -1,55 +1,46 @@
-<head>
-  <title>Math Game</title>
-  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'></link>
-  <link rel='stylesheet' href='styles.css'></link>
-</head>
+<html ng-app='my-app'>
 
-<body>
+  <head>
+    <title>Math Game</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'></link>
+    <link rel='stylesheet' href='assets/stylesheets/styles.css'></link>
+  </head>
 
-  <header id='my-header'>
+  <body>
 
-  </header>
+    <ng-include src="'header.html'"></ng-include>
 
-  <h1 class='text-center'>High Scores Table</h1>
+    <h1 class='text-center'>High Scores Table</h1>
 
-  <div class='achievements'>
-    <table id='scores-table'>
+    <div class='achievements'>
+      <table id='scores-table' ng-controller='scoresController'>
 
-      <tr class='gold'>
-        <td><strong>Rank 1</strong></td>
-        <td></td>
-      </tr>
+        <tr id='scores-header'>
+          <th>Ranking</th>
+          <th>Score</th>
+          <th>Level</th>
+        </tr>
+        
+        <tr ng-repeat='score in scoreData' class='{{score.class}}'>
+          <td><strong>Rank {{ $index + 1 }}</strong></td>
+          <td>{{ score.score }}</td>
+          <td>{{ score.level }}</td>
+        </tr>
 
-      <tr class='silver'>
-        <td><strong>Rank 2</strong></td>
-        <td></td>
-      </tr>
+      </table>
+    </div>
 
-      <tr class='bronze'>
-        <td><strong>Rank 3</strong></td>
-        <td></td>
-      </tr>
+    <ng-include src="'footer.html'"></ng-include>
+    
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
+    <script src='scripts/app.js'></script>
+		<script src='scripts/services/game.js'></script>
+    <script src='scripts/controllers/navController.js'></script>
+    <script src='scripts/controllers/scoresController.js'></script>
 
-      <tr>
-        <td><strong>Rank 4</strong></td>
-        <td></td>
-      </tr>
+  </body>
 
-      <tr>
-        <td><strong>Rank 5</strong></td>
-        <td></td>
-      </tr>
-
-    </table>
-  </div>
-
-  <footer>
-    <p class='text-center'>Written by Richard G. Hamilton - Front End Web Developer</p>
-  </footer>
-  
-  <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
-  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
-  <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
-  <script src='scripts/scores.js'></script>
-
-</body>
+</html>

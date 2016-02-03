@@ -1,70 +1,88 @@
-<head>
-  <title>Math Game</title>
-  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'></link>
-  <link rel='stylesheet' href='styles.css'></link>
-</head>
+<html ng-app='my-app'>
 
-<body>
-  <script>
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId      : '754606401339742',
-        xfbml      : true,
-        version    : 'v2.5'
-      });
-    };
+  <head>
+    <title>Math Game</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'></link>
+    <link rel='stylesheet' href='assets/stylesheets/styles.css'></link>
+  </head>
 
-    (function(d, s, id){
-       var js, fjs = d.getElementsByTagName(s)[0];
-       if (d.getElementById(id)) {return;}
-       js = d.createElement(s); js.id = id;
-       js.src = "//connect.facebook.net/en_US/sdk.js";
-       fjs.parentNode.insertBefore(js, fjs);
-     }(document, 'script', 'facebook-jssdk'));
-  </script>
+  <body>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '754606401339742',
+          xfbml      : true,
+          version    : 'v2.5'
+        });
+      };
 
-  <header id='my-header'>
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <ng-include src="'header.html'"></ng-include>
+
+    <h1 class='text-center'>Math Game</h1>
+
+    <main>
+    
+      <div ng-controller='achievementsController'>
+        <div id='notification' ng-hide='!unlocked'></div>
+      </div>
+      
+      <div ng-controller='scoresController'>
+        <div id='game-info' ng-hide='!playing'>
+          <p id='level'>Level: {{ level }}
+            <span id='score'>Score: {{ score }}</span>
+            <span id='high-score'>High Score: {{ highScore() }}</span>
+          </p>
+        </div>
+      </div>
+
+      <div ng-controller='gamesController'>
+        <div id='game-block'>
+        
+        </div>
+
+        <div id='controls' ng-hide='!playing'>
+          <button id='greater-than' ng-click='greaterThan()'>&gt</button>
+          <button id='equals' ng-click='equals()'>=</button>
+          <button id='less-than' ng-click='lessThan()'>&lt</button>
+        </div>
+
+        <div id='options'>
+          <button class='btn btn-primary' id='new-game' ng-click='newGame()'>New Game</button>
+          <a class='btn btn-success' id='help' href='help.html'>How To Play</a>
+          <a class='btn btn-warning' id='achievements' href='achievements.html'>Achievements</a>
+          <a class='btn btn-danger' id='top-scores' href='scores.html'>Top Scores</a>
+        </div>
+      </div>
   
-  </header>
+      <div id='fb-container'>
+        <div class='fb-like' data-share='true' data-width='450' data-show-faces='true'></div>
+      </div>
 
-  <h1 class='text-center'>Math Game</h1>
+    </main>
 
-  <main>
-    <div id='notification'></div>
-    <div id='game-info'>
-      <p id='level'>
-        <span id='score'></span>
-        <span id='high-score'></span>
-      </p>
-    </div>
+    <ng-include src="'footer.html'"></ng-include>
 
-    <div id='game-block'></div>
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js'></script>
+    <script src='scripts/data.js'></script>
+    <script src='scripts/app.js'></script>
+    <script src='scripts/services/game.js'></script>
+    <script src='scripts/controllers/navController.js'></script>
+    <script src='scripts/controllers/achievementsController.js'></script>
+    <script src='scripts/controllers/scoresController.js'></script>
+    <script src='scripts/controllers/gamesController.js'></script>
 
-    <div id='controls'></div>
+  </body>
 
-    <div id='options'>
-      <button class='btn btn-primary' id='new-game' onclick='startGame()'>New Game</button>
-      <a class='btn btn-success' id='help' href='help.html'>How To Play</a>
-      <a class='btn btn-warning' id='achievements' href='achievements.html'>Achievements</a>
-      <a class='btn btn-danger' id='top-scores' href='scores.html'>Top Scores</a>
-    </div>
-
-    <div id='fb-container'>
-      <div class='fb-like' data-share='true' data-width='450' data-show-faces='true'></div>
-    </div>
-
-  </main>
-
-  <footer>
-    <p class='text-center'>Written by Richard G. Hamilton - Front End Web Developer</p>
-  </footer>
-
-  <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
-  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
-  <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
-  <script src='scripts/scores.js'></script>
-  <script src='scripts/expressions.js'></script>
-  <script src='scripts/achievements.js'></script>
-  <script src='scripts/math.js'></script>
-
-</body>
+</html>

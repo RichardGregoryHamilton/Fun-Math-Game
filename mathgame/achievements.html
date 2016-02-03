@@ -1,122 +1,53 @@
-<head>
-  <title>Achievements</title>
-  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'></link>
-  <link rel='stylesheet' href='styles.css'></link>
-</head>
+<html ng-app='my-app'>
 
-<body>
+  <head>
+    <title>Achievements</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'></link>
+    <link rel='stylesheet' href='assets/stylesheets/styles.css'></link>
+  </head>
 
-  <!-- We will load the header dynamically with jQuery load -->
-  <header id='my-header'>
+  <body>
 
-  </header>
+    <ng-include src="'header.html'"></ng-include>
 
-  <h1 class='text-center'>Achievements</h1>
+    <h1 class='text-center'>Achievements</h1>
 
-  <div class='achievements-table'>
-    <table>
+    <div class='achievements-table'>
+      <table ng-controller='achievementsController'>
+        
+        <tr ng-repeat='achievement in levelAchievements' ng-class="{'unlocked': hasAchievement(achievement.name), 'locked': !hasAchievement(achievement.name) }">
+          <td class='level'><strong>Reach {{ achievement.name }}</strong></td>
+          <td>Earn a score of {{ achievement.value }}</td>
+          <td><img class='achievement-img' src='assets/images/{{ achievement.src }}' alt='{{ achievement.alt }}'</td>
+        </tr>
+        
+        <tr ng-repeat='achievement in gameAchievements' ng-class="{'unlocked': hasAchievement(achievement.name), 'locked': !hasAchievement(achievement.name)}">
+          <td class='games-played'><strong>{{ achievement.name }}</strong></td>
+          <td>Play {{ achievement.value }} games</td>
+          <td><img class='achievement-img' src='assets/images/{{ achievement.src }}' alt='{{ achievement.alt }}'</td>
+        </tr>
+        
+        <tr ng-repeat='achievement in scoreAchievements' ng-class="{'unlocked': hasAchievement(achievement.name), 'locked': !hasAchievement(achievement.name)}">
+          <td class='total-score'><strong>{{ achievement.name }}</strong></td>
+          <td>Reach a cumulative score of {{ achievement.value }}</td>
+          <td><img class='achievement-img' src='assets/images/{{ achievement.src }}' alt='{{ achievement.alt }}'</td>
+        </tr>
+        
+      </table>
+    </div>
+
+    <ng-include src="'footer.html'"></ng-include>
     
-      <tr>
-        <td class='level'><strong>Reach Level 1</strong></td>
-        <td>Play your first game</td>
-        <td><img class='achievement-img' src='images/number1.jpe' alt='number 1'></img></td>
-      </tr>
-      
-      <tr>
-        <td class='level'><strong>Reach Level 2</strong></td>
-        <td>Get a score of 10 or more</td>
-        <td><img class='achievement-img' src='images/number2.png' alt='number 2'></img></td>
-      </tr>
-      
-      <tr>
-        <td class='level'><strong>Reach Level 3</strong></td>
-        <td>Get a score of 20 or more</td>
-        <td><img class='achievement-img' src='images/number3.png' alt='number 3'></img></td>
-      </tr>
-      
-      <tr>
-        <td class='level'><strong>Reach Level 4</strong></td>
-        <td>Get a score of 30 or more</td>
-        <td><img class='achievement-img' src='images/number4.png' alt='number 4'></img></td>
-      </tr>
-      
-      <tr>
-        <td class='level'><strong>Reach Level 5</strong></td>
-        <td>Get a score of 40 or more</td>
-        <td><img class='achievement-img' src='images/number5.jpg' alt='number 5'></img></td>
-      </tr>
-      
-      <tr>
-        <td class='level'><strong>Reach Level 6</strong></td>
-        <td>Get a score of 50 or more</td>
-        <td><img class='achievement-img' src='images/number6.jpe' alt='number 6'></img></td>
-      </tr>
-      
-      <tr>
-        <td class='games-played'><strong>Novice</strong></td>
-        <td>Play 1 game</td>
-        <td><img class='achievement-img' src='images/novice.jpe' alt='novice'></img></td>
-      </tr>
-      
-      <tr>
-        <td class='games-played'><strong>Beginner</strong></td>
-        <td>Play a total of 5 games</td>
-        <td><img class='achievement-img' src='images/beginner.jpg' alt='beginner'></img></td>
-      </tr>
-      
-      <tr>
-        <td class='games-played'><strong>Journeyman</strong></td>
-        <td>Play a total of 10 games</td>
-        <td><img class='achievement-img' src='images/journeyman.png' alt='journeyman'></img></td>
-      </tr>
-      
-      <tr>
-        <td class='games-played'><strong>Master</strong></td>
-        <td>Play a total of 20 games</td>
-        <td><img class='achievement-img' src='images/master.jpe' alt='master'></img></td>
-      </tr>
-      
-      <tr>
-        <td class='games-played'><strong>Grand Master</strong></td>
-        <td>Play a total of 30 games</td>
-        <td><img class='achievement-img' src='images/grandmaster.jpg' alt='grand master'></img></td>
-      </tr>
-      
-      <tr>
-        <td class='total-score'><strong>Score 100</strong></td>
-        <td>Reach a cumulative score of 100</td>
-        <td><img class='achievement-img' src='images/score100.png' alt='score 100'></img></td>
-      </tr>
-      
-      <tr>
-        <td class='total-score'><strong>Score 200</strong></td>
-        <td>Reach a cumulative score of 200</td>
-        <td><img class='achievement-img' src='images/score200.png' alt='score 200'></img></td>
-      </tr>
-      
-      <tr>
-        <td class='total-score'><strong>Score 500</strong></td>
-        <td>Reach a cumulative score of 500</td>
-        <td><img class='achievement-img' src='images/score500.jpg' alt='score 500'></img></td>
-      </tr>
-      
-      <tr>
-        <td class='total-score'><strong>Score 1000</strong></td>
-        <td>Reach a cumulative score of 1000</td>
-        <td><img class='achievement-img' src='images/score1000.jpe' alt='score 1000'></img></td>
-      </tr>
-      
-    </table>
-  </div>
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
+    <script src='scripts/app.js'></script>
+    <script src='scripts/services/game.js'></script>
+    <script src='scripts/controllers/navController.js'></script>
+    <script src='scripts/controllers/achievementsController.js'></script>
+    <script src='scripts/scores.js'></script>
 
-  <footer>
-    <p class='text-center'>Written by Richard G. Hamilton - Front End Web Developer</p>
-  </footer>
+  </body>
   
-  <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
-  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
-  <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
-  <script src='scripts/scores.js'></script>
-  <script src='scripts/achievements.js'></script>
-
-</body>
+</html>

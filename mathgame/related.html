@@ -1,64 +1,64 @@
-<head>
-  <title>More Games</title>
-  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
-  <link rel='stylesheet' href='styles.css'></link>
-</head>
+<html ng-app='my-app'>
 
-<body>
+  <head>
+    <title>More Games</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='assets/stylesheets/styles.css'></link>
+  </head>
 
-  <header id='my-header'>
+  <body>
+
+    <ng-include src="'header.html'"></ng-include>
+    
+    <h1 class='text-center'>More Games by the developer</h1>
+    
+    <section class='game-section'>
+      
+      <h3>
+        <span id='shapes'>Shapes</span>
+        <span id='header-game'>Game</span>
+      </h3>
+      
+      <p>
+        <strong>Description: </strong>
+        An arcade style game where you are presented with various shapes. Your objective is to determine which shape appears in
+        front of you as quickly as possible.
+      </p>
+      
+      <p>
+        <strong>Link: </strong>
+        <a href='https://shapes-game.firebaseapp.com'>Shapes Game</a>
+      </p>
+      
+    </section>
+    
+    <section class='game-section'>
+      
+      <h3>
+        <span id='snake'>Canvas</span>
+        <span id='online'>Snake</span>
+      </h3>
+      
+      <p>
+        <strong>Description: </strong>
+        A port of the classic arcade snake game.
+      </p>
+      
+      <p>
+        <strong>Link: </strong>
+        <a href='https://canvas-snake.firebaseapp.com'>Canvas Snake</a>
+      </p>
+      
+    </section>
+    
+    <ng-include src="'footer.html'"></ng-include>
+    
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
+    <script src='scripts/app.js'></script>
+    <script src='scripts/controllers/navController.js'></script>
+    
+  </body>
   
-  </header>
-  
-  <h1 class='text-center'>More Games by the developer</h1>
-  
-  <section class='game-section'>
-    
-    <h3>
-      <span id='shapes'>Shapes</span>
-      <span id='header-game'>Game</span>
-    </h3>
-    
-    <p>
-      <strong>Description: </strong>
-      An arcade style game where you are presented with various shapes. Your objective is to determine which shape appears in
-      front of you as quickly as possible.
-    </p>
-    
-    <p>
-      <strong>Link: </strong>
-      <a href='https://shapes-game.firebaseapp.com'>Shapes Game</a>
-    </p>
-    
-  </section>
-  
-  <section class='game-section'>
-    
-    <h3>
-      <span id='snake'>Canvas</span>
-      <span id='online'>Snake</span>
-    </h3>
-    
-    <p>
-      <strong>Description: </strong>
-      A port of the classic arcade snake game.
-    </p>
-    
-    <p>
-      <strong>Link: </strong>
-      <a href='https://canvas-snake.firebaseapp.com'>Canvas Snake</a>
-    </p>
-    
-  </section>
-  
-  <footer>
-    <p class='text-center'>Written by Richard G. Hamilton - Front End Web Developer</p>
-  </footer>
-  
-  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js'></script>
-  <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
-  <script src='scripts/scores.js'></script>
-  <script src='scripts/achievements.js'></script>
-  <script src='scripts/math.js'></script>
-  
-</body>
+</html>

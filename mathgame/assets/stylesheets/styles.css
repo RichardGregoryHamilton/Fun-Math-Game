@@ -110,16 +110,16 @@ button a:hover {
 
 /* Game buttons */
 
-.greater-than, .equals, .less-than {
+#greater-than, #equals, #less-than {
   margin: 30px 10px;
   padding: 5px 10px;
   color: white;
   font-weight: bold;
 }
 
-.greater-than { background: green; }
-.equals { background: gold; }
-.less-than { background: red; }
+#greater-than { background: green; }
+#equals { background: gold; }
+#less-than { background: red; }
 
 /* Game information */
 
@@ -131,11 +131,11 @@ button a:hover {
   text-align: center;
   padding: 10px 5px;
   width: 45%;
-  visibility: hidden;
 }
 
 #level {
   white-space: nowrap;
+  font-weight: bold;
 }
 
 #score, #high-score {
@@ -157,6 +157,12 @@ button a:hover {
 }
 
 /* Scores */
+
+#scores-header {
+  background: orange;
+  height: 60px;
+  text-indent: 2%;
+}
 
 .gold { background: gold; }
 .silver { background: silver; }
