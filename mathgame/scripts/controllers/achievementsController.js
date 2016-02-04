@@ -63,28 +63,37 @@ angular.module('my-app')
         }
         
         $scope.levelAchievements = [
-                                     { 'name': 'Level 1',  'value': 0,   'src': 'number1.jpe',  'alt': 'Level 1'  },
-                                     { 'name': 'Level 2',  'value': 10,  'src': 'number2.png',  'alt': 'Level 2'  },
-                                     { 'name': 'Level 3',  'value': 20,  'src': 'number3.png',  'alt': 'Level 3'  },
-                                     { 'name': 'Level 4',  'value': 30,  'src': 'number4.png', 'alt': 'Level 4' },
-                                     { 'name': 'Level 5',  'value': 40,  'src': 'number5.jpg',  'alt': 'Level 5'  },
-                                     { 'name': 'Level 6',  'value': 50,  'src': 'number6.jpe',  'alt': 'Level 6'  }
+                                     { 'name': 'Level 2',  'value': 10, 'points': 5,  'src': 'number2.png' },
+                                     { 'name': 'Level 3',  'value': 20, 'points': 10, 'src': 'number3.jpg' },
+                                     { 'name': 'Level 4',  'value': 30, 'points': 15, 'src': 'number4.jpe' },
+                                     { 'name': 'Level 5',  'value': 40, 'points': 20, 'src': 'number5.jpg' },
+                                     { 'name': 'Level 6',  'value': 50, 'points': 25, 'src': 'number6.jpg' },
+                                     { 'name': 'Level 7',  'value': 60, 'points': 30, 'src': 'number7.png' }
                                    ];
                                    
         $scope.scoreAchievements = [
-                                     { 'name': 'Score 100',  'value': 100,  'src': 'score100.png',  'alt': 'Score 100'  },
-                                     { 'name': 'Score 200',  'value': 200,  'src': 'score200.png',  'alt': 'Score 200'  },
-                                     { 'name': 'Score 500',  'value': 500,  'src': 'score500.jpg',  'alt': 'Score 500'  },
-                                     { 'name': 'Score 1000', 'value': 1000, 'src': 'score1000.jpe', 'alt': 'Score 1000' }
+                                     { 'name': 'Score 100',  'value': 100,  'points': 10, 'src': 'score100.png' },
+                                     { 'name': 'Score 200',  'value': 200,  'points': 15, 'src': 'score200.png' },
+                                     { 'name': 'Score 500',  'value': 500,  'points': 30, 'src': 'score500.jpg' },
+                                     { 'name': 'Score 1000', 'value': 1000, 'points': 50, 'src': 'score1000.jpe' }
                                    ];
                                    
         $scope.gameAchievements = [
-                                    { 'name': 'Novice',       'value': 1,  'src': 'novice.jpe',      'alt': 'Novice'        },
-                                    { 'name': 'Beginner',     'value': 5,  'src': 'beginner.jpg',    'alt': 'Beginner'      },
-                                    { 'name': 'Journeyman',   'value': 10, 'src': 'journeyman.png',  'alt': 'Journeyman'    },
-                                    { 'name': 'Master',       'value': 20, 'src': 'master.jpe',      'alt': 'Master'        },
-                                    { 'name': 'Grand Master', 'value': 30, 'src': 'grandmaster.jpg', 'alt': 'Grand Master'  }
+                                    { 'name': 'Novice',       'value': 1,  'points': 5,  'src': 'novice.jpe' },
+                                    { 'name': 'Beginner',     'value': 5,  'points': 10, 'src': 'beginner.jpg' },
+                                    { 'name': 'Journeyman',   'value': 10, 'points': 15, 'src': 'journeyman.png' },
+                                    { 'name': 'Master',       'value': 20, 'points': 20, 'src': 'master.jpe' },
+                                    { 'name': 'Grand Master', 'value': 30, 'points': 30, 'src': 'grandmaster.jpg' }
                                   ];
                                   
+        var categories = [$scope.scoreAchievements, $scope.gameAchievements, $scope.levelAchievements];
+        
+        categories.forEach(function(category) {
+            category.forEach(function(achievement) {
+                var source = achievement.src;
+                achievement.src = $scope.hasAchievement(achievement.name) ? source : 'questionmark.jpg';
+            });
+        });
+        
     }]);
     

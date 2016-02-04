@@ -4,12 +4,13 @@ angular.module('my-app')
         $scope.score = Game.score;
         $scope.level = Game.level;
         $scope.playing = false;
-        
+		
         /* Watch for a change in the service variables to display them */
         
         $scope.$watch(function() {
             return Game.playing;
             }, function(newVal, oldVal) {
+				console.log(newVal);
             $scope.playing = newVal;
         });
 

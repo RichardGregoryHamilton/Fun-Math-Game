@@ -3,50 +3,51 @@
   <head>
     <title>Achievements</title>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'></link>
-    <link rel='stylesheet' href='assets/stylesheets/styles.css'></link>
+    <link rel='stylesheet' href='../assets/stylesheets/styles.css'></link>
   </head>
 
   <body>
 
-    <ng-include src="'header.html'"></ng-include>
+    <ng-include src="'../header.html'"></ng-include>
 
     <h1 class='text-center'>Achievements</h1>
 
-    <div class='achievements-table'>
-      <table ng-controller='achievementsController'>
+      <table class='achievements-table' ng-controller='achievementsController'>
         
         <tr ng-repeat='achievement in levelAchievements' ng-class="{'unlocked': hasAchievement(achievement.name), 'locked': !hasAchievement(achievement.name) }">
+          <td><img class='achievement-img' src='../assets/images/{{ achievement.src }}' alt='{{ achievement.name }}'</td>
           <td class='level'><strong>Reach {{ achievement.name }}</strong></td>
-          <td>Earn a score of {{ achievement.value }}</td>
-          <td><img class='achievement-img' src='assets/images/{{ achievement.src }}' alt='{{ achievement.alt }}'</td>
+          <td>Score {{ achievement.value }} points in one game</td>
+          <td>{{ achievement.points }} points</td>
         </tr>
         
         <tr ng-repeat='achievement in gameAchievements' ng-class="{'unlocked': hasAchievement(achievement.name), 'locked': !hasAchievement(achievement.name)}">
+          <td><img class='achievement-img' src='../assets/images/{{ achievement.src }}' alt='{{ achievement.name }}'</td>
           <td class='games-played'><strong>{{ achievement.name }}</strong></td>
           <td>Play {{ achievement.value }} games</td>
-          <td><img class='achievement-img' src='assets/images/{{ achievement.src }}' alt='{{ achievement.alt }}'</td>
+          <td>{{ achievement.points }} points</td>
         </tr>
         
         <tr ng-repeat='achievement in scoreAchievements' ng-class="{'unlocked': hasAchievement(achievement.name), 'locked': !hasAchievement(achievement.name)}">
+          <td><img class='achievement-img' src='../assets/images/{{ achievement.src }}' alt='{{ achievement.name }}'</td>
           <td class='total-score'><strong>{{ achievement.name }}</strong></td>
           <td>Reach a cumulative score of {{ achievement.value }}</td>
-          <td><img class='achievement-img' src='assets/images/{{ achievement.src }}' alt='{{ achievement.alt }}'</td>
+          <td>{{ achievement.points }} points</td>
         </tr>
         
       </table>
-    </div>
 
-    <ng-include src="'footer.html'"></ng-include>
+    <ng-include src="'../footer.html'"></ng-include>
     
     <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
     <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js'></script>
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
-    <script src='scripts/app.js'></script>
-    <script src='scripts/services/game.js'></script>
-    <script src='scripts/controllers/navController.js'></script>
-    <script src='scripts/controllers/achievementsController.js'></script>
-    <script src='scripts/scores.js'></script>
+    <script src='../scripts/app.js'></script>
+    <script src='../scripts/services/game.js'></script>
+    <script src='../scripts/controllers/navController.js'></script>
+    <script src='../scripts/controllers/achievementsController.js'></script>
+    <script src='../scripts/scores.js'></script>
 
   </body>
   

@@ -17,7 +17,7 @@ h1 {
 }
 
 table {
-  width: 70%;
+  width: 65%;
   margin: 5% auto;
 }
 
@@ -26,7 +26,7 @@ tr {
 }
 
 td {
-  padding: 20px 15px;
+  padding: 15px;
 }
 
 footer {
@@ -151,8 +151,8 @@ button a:hover {
 .unlocked:hover { background: goldenrod; }
 
 .achievement-img {
-  height: 60px;
-  width: 60px;
+  height: 50px;
+  width: 50px;
   border-radius: 50%;
 }
 
