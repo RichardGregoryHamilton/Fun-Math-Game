@@ -1,4 +1,4 @@
-<html ng-app='my-app'>
+<html ng-app='mathGame'>
 
   <head>
     <title>Achievements</title>
@@ -12,7 +12,14 @@
 
     <h1 class='text-center'>Achievements</h1>
 
-      <table class='achievements-table' ng-controller='achievementsController'>
+    <div ng-controller='achievementsController'>
+      
+      <div id='achievements-summary'>
+        Achievements Summary: {{ unlockedAchievements }} out of {{ availableAchievements}} achievements
+        ({{ unlockedPoints }} / {{ availablePoints }} points )
+      </div>
+      
+      <table id='achievements-table'>
         
         <tr ng-repeat='achievement in levelAchievements' ng-class="{'unlocked': hasAchievement(achievement.name), 'locked': !hasAchievement(achievement.name) }">
           <td><img class='achievement-img' src='../assets/images/{{ achievement.src }}' alt='{{ achievement.name }}'</td>
@@ -36,18 +43,20 @@
         </tr>
         
       </table>
-
+    </div>
+    
     <ng-include src="'../footer.html'"></ng-include>
     
     <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
     <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js'></script>
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
     <script src='../scripts/app.js'></script>
+    <script src='../scripts/arrays.js'></script>
     <script src='../scripts/services/game.js'></script>
     <script src='../scripts/controllers/navController.js'></script>
     <script src='../scripts/controllers/achievementsController.js'></script>
-    <script src='../scripts/scores.js'></script>
 
   </body>
   

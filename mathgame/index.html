@@ -1,9 +1,9 @@
-<html ng-app='my-app'>
+<html ng-app='mathGame'>
 
   <head>
     <title>Math Game</title>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'></link>
-    <link rel='stylesheet' href='../assets/stylesheets/styles.css'></link>
+    <link rel='stylesheet' href='assets/stylesheets/styles.css'></link>
   </head>
 
   <body>
@@ -32,7 +32,7 @@
     <main>
     
       <div ng-controller='achievementsController'>
-        <div id='notification' ng-hide='!unlocked'></div>
+        <div id='notification'></div>
       </div>
       
       <div ng-controller='scoresController'>
@@ -50,9 +50,9 @@
         </div>
 
         <div id='controls' ng-hide='!playing'>
-          <button id='greater-than' ng-click='greaterThan()'>&gt</button>
-          <button id='equals' ng-click='equals()'>=</button>
-          <button id='less-than' ng-click='lessThan()'>&lt</button>
+          <button id='greater-than' ng-click="evaluate('greater-than')">&gt</button>
+          <button id='equals' ng-click="evaluate('equals')">=</button>
+          <button id='less-than' ng-click="evaluate('less-than')">&lt</button>
         </div>
 
         <div id='options'>
@@ -75,13 +75,15 @@
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
     <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js'></script>
-    <script src='../scripts/data.js'></script>
-    <script src='../scripts/app.js'></script>
-    <script src='../scripts/services/game.js'></script>
-    <script src='../scripts/controllers/navController.js'></script>
-    <script src='../scripts/controllers/achievementsController.js'></script>
-    <script src='../scripts/controllers/scoresController.js'></script>
-    <script src='../scripts/controllers/gamesController.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js'></script>
+    <script src='scripts/data.js'></script>
+    <script src='scripts/app.js'></script>
+		<script src='scripts/arrays.js'></script>
+    <script src='scripts/services/game.js'></script>
+    <script src='scripts/controllers/navController.js'></script>
+    <script src='scripts/controllers/achievementsController.js'></script>
+    <script src='scripts/controllers/scoresController.js'></script>
+    <script src='scripts/controllers/gamesController.js'></script>
 
   </body>
 

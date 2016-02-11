@@ -1,4 +1,4 @@
-angular.module('my-app')
+angular.module('mathGame')
     .controller('scoresController', ['$scope', 'Game', function($scope, Game) {
 
         $scope.score = Game.score;
@@ -10,7 +10,6 @@ angular.module('my-app')
         $scope.$watch(function() {
             return Game.playing;
             }, function(newVal, oldVal) {
-				console.log(newVal);
             $scope.playing = newVal;
         });
 
@@ -30,18 +29,18 @@ angular.module('my-app')
             }
         });
         
-        $scope.oldScores = JSON.parse(localStorage['mathScores'] || '[]');
+        $scope.oldScores = JSON.parse(localStorage['scores'] || '[]');
         
-        $scope.sorted = $scope.oldScores.sort(function(scoreA, scoreB) {
+        var sorted = $scope.oldScores.sort(function(scoreA, scoreB) {
             return scoreB - scoreA;
         });
         
         $scope.scoreData = [
-                             { 'class': 'gold',     'score': $scope.sorted[0], 'level': Math.floor($scope.sorted[0] / 10) + 1 },
-                             { 'class': 'silver',   'score': $scope.sorted[1], 'level': Math.floor($scope.sorted[1] / 10) + 1 },
-                             { 'class': 'bronze',   'score': $scope.sorted[2], 'level': Math.floor($scope.sorted[2] / 10) + 1 },
-                             { 'class': 'top-five', 'score': $scope.sorted[3], 'level': Math.floor($scope.sorted[3] / 10) + 1 },
-                             { 'class': 'top-five', 'score': $scope.sorted[4], 'level': Math.floor($scope.sorted[4] / 10) + 1 }
+                             { 'class': 'gold',     'score': sorted[0], 'level': Math.floor(sorted[0] / 10) + 1 },
+                             { 'class': 'silver',   'score': sorted[1], 'level': Math.floor(sorted[1] / 10) + 1 },
+                             { 'class': 'bronze',   'score': sorted[2], 'level': Math.floor(sorted[2] / 10) + 1 },
+                             { 'class': 'top-five', 'score': sorted[3], 'level': Math.floor(sorted[3] / 10) + 1 },
+                             { 'class': 'top-five', 'score': sorted[4], 'level': Math.floor(sorted[4] / 10) + 1 }
                            ];
                            
         $scope.highScore = function() {

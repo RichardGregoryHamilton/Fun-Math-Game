@@ -1,4 +1,4 @@
-angular.module('my-app')
+angular.module('mathGame')
     .factory('Game', function() {
         return { 
             colors: ['#FF0000', '#660000', '#FF3300', '#FF9900', '#003300',
@@ -11,6 +11,7 @@ angular.module('my-app')
             },
             level: 1,
             score: 0,
+			gamesPlayed: Number(localStorage['gamesPlayed']),
             playing: false
         };
     });

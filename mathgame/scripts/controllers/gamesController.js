@@ -1,14 +1,16 @@
-angular.module('my-app')
+angular.module('mathGame')
     .controller('gamesController', ['$scope', '$interval', 'Game', function($scope, $interval, Game) {
 
 		$scope.playing = false;
+		var operators = ['+', '-', '*', '/'];
+		var gameBlock = $('#game-block');
 		
         $scope.newGame = function() {
             if (Game.playing) {
                 return false;
             }
             else {
-                $scope.resetGame();
+                resetGame();
             }
         }
    
@@ -18,22 +20,24 @@ angular.module('my-app')
             $scope.playing = newVal;
         });
 		
-        $scope.resetGame = function() {
+        function resetGame() {
+			++localStorage['gamesPlayed'];
+			++Game.gamesPlayed;
             Game.playing = true;
             Game.score = 0;
             Game.level = 1;
-            $scope.gameLoop();
+            gameLoop();
         }
         
-        $scope.gameLoop = function() {
+        function gameLoop() {
             $('.exp1, .exp2').remove();
-            $scope.generateExpressions();
-            $scope.animateDivs();
+            generateExpressions();
+            animateDivs();
         }
         
-        $scope.generateExpressions = function() {
-            $('#game-block').append("<div class='exp1'>");
-            $('#game-block').append("<div class='exp2'>");
+        function generateExpressions() {
+            gameBlock.append("<div class='exp1'>");
+            gameBlock.append("<div class='exp2'>");
 
             $('.exp1, .exp2').each(function() {
                 $(this).css({ 'color': 'white',
@@ -42,38 +46,38 @@ angular.module('my-app')
                               'padding': '8px 0' });
 
                 switch(true) {
-                    case (Game.level == 1):
-                        $(this).html($scope.randEasy() + ' + ' + $scope.randEasy());
+                    case (Game.level === 1):
+                        $(this).html(randEasy() + ' + ' + randEasy());
                         break;
                     case (Game.level >= 2 && Game.level <= 3):
-                        $(this).html($scope.random('Med') + ' + ' + $scope.random('Med'));
+                        $(this).html(random('Med') + ' + ' + random('Med'));
                         break;
                     case (Game.level >= 4 && Game.level <= 5):
-                        $(this).html($scope.random('Hard') + ' + ' + $scope.random('Hard'));
+                        $(this).html(random('Hard') + ' + ' + random('Hard'));
                         break;
                     case (Game.level >= 6 && Game.level <= 7):
-                        $(this).html($scope.random('Hard') + ' ' + Game.randElement($scope.operators) + ' ' + $scope.random('Hard'));
+                        $(this).html(random('Hard') + ' ' + Game.randElement(operators) + ' ' + random('Hard'));
                         break;
                     default:
-                        $(this).html($scope.random('Extreme') + ' ' + Game.randElement($scope.operators) + ' ' + $scope.random('Extreme'));
+                        $(this).html(random('Extreme') + ' ' + Game.randElement(operators) + ' ' + random('Extreme'));
                         break;
                 }
                 var expressions = $(this).html().split(' ');
                 var leftNum = Number(expressions[0]);
                 var operator = expressions[1];
                 var rightNum = Number(expressions[2]);
-                var result = $scope.calculateExpression(leftNum, rightNum, operator);
+                var result = calculateExpression(leftNum, rightNum, operator);
 
                 $(this).data('result', result);
 
             });
         }
         
-		$scope.randEasy = function() {
+		function randEasy() {
             return Math.floor(Game.rand() * 10);
         }
 
-        $scope.random = function(level) {
+        function random(level) {
             switch(level) {
                 case 'Med':
                     return Game.rand() > 0.5 ? Math.floor(Game.rand() * 20) : Math.floor(Game.rand() * -20);
@@ -87,20 +91,21 @@ angular.module('my-app')
             }
         }
         
-        $scope.lessThan = function() {
-            $('.exp1').data('result') < $('.exp2').data('result') ? $scope.incrementScore() : $scope.endGame();
-        }
+		$scope.evaluate = function(choice) {
+			var exp1 = $('.exp1').data('result');
+			var exp2 = $('.exp2').data('result');
+			if (choice === 'less-than') {
+				exp1 < exp2 ? incrementScore() : endGame();
+			}
+			else if (choice == 'equals') {
+				exp1 === exp2 ? incrementScore() : endGame();
+			}
+			else {
+				exp1 > exp2 ? incrementScore() : endGame();
+			}
+		}
         
-        $scope.equals = function() {
-            $('.exp1').data('result') == $('.exp2').data('result') ? $scope.incrementScore() : $scope.endGame();
-        }
-
-        $scope.greaterThan = function() {
-            $('.exp1').data('result') > $('.exp2').data('result') ? $scope.incrementScore() : $scope.endGame();
-        }
-        
-        $scope.calculateExpression = 
-        function(num1, num2, operator) {
+        function calculateExpression(num1, num2, operator) {
             switch(operator) {
                 case '+':
                     return num1 + num2;
@@ -117,31 +122,31 @@ angular.module('my-app')
             }
         }
 		
-		$scope.animateDivs = function() {
+		function animateDivs() {
             $('.exp2').animate( { 'marginRight': '70%' }, 5000);
             var prevScore = Game.score;
             setTimeout(function() {
-                if (Game.score == prevScore) {
-                    $scope.endGame()
+                if (Game.score === prevScore) {
+                    endGame()
                 }
             }, 5000);
         }
 		
-		$scope.addScores = function() {
-			var scores = JSON.parse(localStorage['mathScores']);
-			localStorage['mathScores'] = scores.length ? localStorage['mathScores'].replace(']', ',') + Game.score + ']' : JSON.stringify([Game.score]);
-			localStorage['mathTotalScore'] = Number(localStorage['mathTotalScore']) + Math.ceil(Game.score / 2);
+		function addScores() {
+			var scores = JSON.parse(localStorage['scores']);
+			localStorage['scores'] = scores.length ? localStorage['scores'].replace(']', ',') + Game.score + ']' : JSON.stringify([Game.score]);
+			localStorage['totalScore'] = Number(localStorage['totalScore']) + Math.ceil(Game.score);
 		}
 		
-        $scope.endGame = function() {
+        function endGame() {
             $('.exp1, .exp2').remove();
             Game.playing = false;
-			$scope.addScores();
+			addScores();
         }
         
-        $scope.incrementScore = function() {
+        function incrementScore() {
             Game.score++;
-            $scope.gameLoop();
+            gameLoop();
             Game.level = Math.ceil(Game.score / 10);
         }
         

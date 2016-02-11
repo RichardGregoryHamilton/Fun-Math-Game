@@ -72,6 +72,10 @@ button a:hover {
 
 /* How To Play */
 
+#help-block {
+  background: gold;
+}
+
 #game-help {
   position: fixed;
   margin: 5% 30%;
@@ -131,6 +135,7 @@ button a:hover {
   text-align: center;
   padding: 10px 5px;
   width: 45%;
+  visibility: hidden;
 }
 
 #level {
@@ -144,6 +149,20 @@ button a:hover {
 }
 
 /* Achievements */
+
+#achievements-summary {
+  background: silver;
+  width: 65%;
+  margin: 2% auto 0 auto;
+  padding: 5px;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+}
+
+#achievements-table {
+  margin-top: 0;
+}
 
 .locked { background: #888888; }
 .locked:hover { background: dimgray; }

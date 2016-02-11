@@ -1,65 +1,82 @@
-angular.module('my-app')
+angular.module('mathGame')
     .controller('achievementsController', ['$scope', '$timeout', 'Game', function($scope, $timeout, Game) {
-        
-        $scope.unlocked = false;
-        
-        $scope.achievementMessage = 'You have unlocked the achievement ';
-        $scope.allScoreAchievements = [];
+
+        var achievementMessage = 'You have unlocked the achievement ';
+        var allScoreAchievements = [];
 
         [100, 200, 500, 1000].forEach(function(number, index) {
-            $scope.allScoreAchievements[index] = { 'name': 'Score ' + number, 'value': number };
+            allScoreAchievements[index] = { 'name': 'Score ' + number, 'value': number };
         });
 
-        $scope.makeUnique = function(array) {
-            return array.filter(function(element, index) {
-                return array.indexOf(element) == index;
-            });
-        }
-
-        $scope.showNotification = function() {
-            $scope.unlocked = true;
+        function showNotification() {
+            $('#notification').css({ 'visibility': 'visible' });
             setTimeout(function() {
-                $scope.unlocked = false;
+                $('#notification').css({ 'visibility': 'hidden' });
             }, 5000);
         }
         
-        $scope.addAchievement = function(level) {
-            var achievements = JSON.parse(localStorage['mathAchievements']); 
-            var totalScore = Number(localStorage['mathTotalScore']);
+        function addAchievement(level) {
+            var achievements = JSON.parse(localStorage['achievements']); 
+            var totalScore = Number(localStorage['totalScore']);
             var achievement = 'Level ' + level ;
             
             if (achievements.length) {
-                if (achievements.indexOf(achievement) < 0) {
-                    localStorage['mathAchievements'] = localStorage['mathAchievements'].replace(']', ',\"') + achievement + "\"" + ']';
-                    $('#notification').html($scope.achievementMessage + achievement);
-                    $scope.showNotification();
+                if (!achievements.includes(achievement)) {
+                    localStorage['achievements'] = localStorage['achievements'].replace(']', ',\"') + achievement + "\"" + ']';
+                    $('#notification').html(achievementMessage + achievement);
+                    showNotification();
                 }
                 
-                for (var i = 0; i < $scope.allScoreAchievements.length; i++) {
-                    var achievement = $scope.allScoreAchievements[i];
-                    if (achievements.indexOf(achievement.name) < 0 && totalScore > achievement.value) {
-                        localStorage['mathAchievements'] = localStorage['mathAchievements'].replace(']', ',\"') + achievement.name + "\"" + ']';
-                        $('#notification').html($scope.achievementMessage + achievement.name);
-                        $scope.showNotification();
+                for (var i = 0; i < allScoreAchievements.length; i++) {
+                    var achievement = allScoreAchievements[i];
+                    if (!achievements.includes(achievement.name) && totalScore > achievement.value) {
+                        localStorage['achievements'] = localStorage['achievements'].replace(']', ',\"') + achievement.name + "\"" + ']';
+                        $('#notification').html(achievementMessage + achievement.name);
+                        showNotification();
                     }
                 }
             }
-             newAchievements = $scope.makeUnique(JSON.parse(localStorage['mathAchievements']));
-            localStorage['mathAchievements'] = JSON.stringify(achievements.length ? newAchievements: [achievement]);
+             newAchievements = makeUnique(JSON.parse(localStorage['achievements']));
+            localStorage['achievements'] = JSON.stringify(achievements.length ? newAchievements: [achievement]);
         }
         
-        $scope.levels = [1, 11, 21, 31, 41, 51, 61];
+        var levels = [11, 21, 31, 41, 51, 61];
+        var gameMilestones = [
+                                { 'number': 1, 'name': 'Novice' },
+                                { 'number': 5, 'name': 'Beginner' },
+                                { 'number': 10, 'name': 'Journeyman' },
+                                { 'number': 20, 'name': 'Master' },
+                                { 'number': 30, 'name': 'Grand Master' }
+                            ];
         
         $scope.$watch(function() {
             return Game.score;
             }, function(newVal, oldVal) {
-            if ($scope.levels.indexOf(newVal) > -1) {
-                $scope.addAchievement(Game.level);
+            if (levels.includes(newVal)) {
+                addAchievement(Game.level);
             }
         });
 
+        $scope.$watch(function() {
+            return Game.gamesPlayed;
+            }, function(newVal, oldVal) {
+			var achievements = JSON.parse(localStorage['achievements']);
+            gameMilestones.forEach(function(m) {
+                if (m.number == newVal && !achievements.includes(m.name)) {
+                    $('#notification').html(achievementMessage + m.name);
+                    showNotification();
+                    if (achievements.length) {
+                        localStorage['achievements'] = localStorage['achievements'].replace(']', ',\"') + m.name +  "\"" + ']';
+                    }
+                    else {
+                        localStorage['achievements'] = JSON.stringify([m.name]);
+                    }
+                }
+            });
+        });
+        
         $scope.hasAchievement = function(achievement) {
-            return localStorage['mathAchievements'].indexOf(achievement) > -1;
+            return localStorage['achievements'].includes(achievement);
         }
         
         $scope.levelAchievements = [
@@ -85,7 +102,19 @@ angular.module('my-app')
                                     { 'name': 'Master',       'value': 20, 'points': 20, 'src': 'master.jpe' },
                                     { 'name': 'Grand Master', 'value': 30, 'points': 30, 'src': 'grandmaster.jpg' }
                                   ];
-                                  
+        
+        var allAchievements = $scope.levelAchievements.concat($scope.scoreAchievements).concat($scope.gameAchievements);
+        $scope.unlockedAchievements = JSON.parse(localStorage['achievements']).length;
+        $scope.availableAchievements = allAchievements.length;      
+        
+        if ($scope.unlockedAchievements) {
+            $scope.unlockedPoints = allAchievements.filter(function(achievement) {
+                                                        return $scope.hasAchievement(achievement.name);
+                                                        }).mapValues('points').sum();
+        }
+        
+        $scope.availablePoints = allAchievements.mapValues('points').sum();
+        
         var categories = [$scope.scoreAchievements, $scope.gameAchievements, $scope.levelAchievements];
         
         categories.forEach(function(category) {
