@@ -1,0 +1,394 @@
+/* General Rules */
+
+body {
+  background: darkslategray;
+}
+
+@media screen and (min-width: 720px) {
+  
+  main {
+    margin: 0 20%;
+  }
+  
+  }
+  table {
+    width: 65%;
+    margin: 5% auto;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  
+  main {
+    margin: 0 5%;
+  }
+  
+  table {
+    width: 100%;
+  }
+}
+
+tr {
+  border: 3px solid black;
+}
+
+td {
+  padding: 15px !important;
+}
+
+h1 {
+  text-align: center;
+}
+
+footer {
+  background: #CC6699;
+  bottom: 0;
+  position: fixed;
+  padding-top: 1%;
+  height: 6.5%;
+  width: 100%;
+}
+
+button a {
+  color: white;
+}
+
+button a:hover {
+  text-decoration: none;
+}
+
+.nav > li > a {
+  color: #9d9d9d;
+  display: inline-block !important;
+}
+/* Navigation */
+
+.list-right {
+  margin-left: 400px;
+}
+
+/* Header */
+
+.fun { color: red; }
+.math { color: darkorange; }
+.game { color: gold; }
+
+@media screen and (min-width: 720px) {
+  #options {
+    margin-left: 15%;
+    margin-top: 13%;
+    position: fixed;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #options {
+    margin-top: 35%;
+    position: fixed;
+  }
+}
+
+.exp-left {
+  float: left;
+  width: 15%;
+}
+
+/* How To Play */
+
+#help-header {
+  color: darkturquoise;
+}
+
+@media screen and (min-width: 720px ) { 
+  #game-help {
+    margin: 5% auto;
+    width: 60%;
+    padding: 2% 5%;
+    background: seagreen;
+    border: 2px solid black;
+  }
+  
+
+  .exp-block .exp1, .exp-block .exp2 {
+    width: 45%;
+  }
+  
+  .operator > #greater-than, .operator > #equals, .operator > #less-than {
+    margin-top: 0;
+    margin-left: 33%;
+  }
+
+}
+
+@media screen and (max-width: 720px) {
+  #game-help {
+    margin: 5% auto;
+    width: 100%;
+    padding: 2% 5%;
+    background: seagreen;
+    border: 2px solid black;
+  }
+  
+  .exp-block .exp1, .exp-block .exp2 {
+    width: 20%;
+  }
+  
+  .exp-block .exp2 {
+      margin-top: -65px;
+  }
+  
+  .operator > #greater-than, .operator > #equals, .operator > #less-than {
+    margin-top: 0;
+    margin-left: 25%;
+  }
+  
+}
+
+.exp-block {
+  margin: 3% 0 0 0;
+}
+
+@media screen and (min-width: 720px) {
+  .exp1, .exp2 {
+    width: 20%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .exp1, .exp2 {
+    width: 25%;
+  }
+}
+
+.exp1 {
+  float: left;
+}
+
+.exp2 {
+  float:right;
+}
+
+/* Frequently Asked Questions */
+
+#faq-header {
+  color: darkturquoise;
+}
+
+@media screen and (min-width: 720px) {
+  #questions-block {
+    margin: 3% 20%;
+    background: burlywood;
+    padding: 2% 5%;
+    border: 3px solid purple;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #questions-block {
+    margin: 3% 0;
+    background: burlywood;
+    padding: 2% 5%;
+    border: 3px solid purple;
+  }
+}
+
+#game-block {
+  margin: 11% 0;
+}
+
+#controls {
+  position: fixed;
+  margin: 6% 0 0 20%;
+}
+
+/* Game buttons */
+
+@media screen and (min-width: 720px) {
+  #greater-than, #equals, #less-than {
+    margin: 30px 10px;
+    padding: 5px 20px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5em;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #greater-than, #equals, #less-than {
+    margin: 30px 10px;
+    padding: 5px 10px;
+    font-size: 1.3em;
+    color: white;
+    font-weight: bold;
+  }
+}
+
+#greater-than { background: darkgreen; }
+#equals { background: gold; }
+#less-than { background: darkred; }
+
+/* Game information */
+
+@media screen and (min-width: 720px ) {
+  #game-info {
+    background: darkcyan;
+    border: 3px solid black;
+    width: 100%;
+    font-size: 1.4em;
+    padding: 1% 7% 0 7%;
+  }
+  
+  #notification {
+    min-height: 50px;
+    background: gold;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    padding: 10px 5px;
+    width: 100%;
+    visibility: hidden;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #game-info {
+    background: darkcyan;
+    border: 3px solid black;
+    width: 100%;
+    font-size: 1.1em;
+    padding: 0.3% 7% 0 7%;
+  }
+  
+  #notification {
+    min-height: 50px;
+    background: gold;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    padding: 10px 5px;
+    width: 100%;
+    visibility: hidden;
+  }
+}
+
+#level {
+  white-space: nowrap;
+  font-weight: bold;
+}
+
+#score, #high-score {
+  margin-left: 20%;
+  font-weight: bold;
+}
+
+/* Achievements */
+
+#achievements-header {
+  color: goldenrod;
+}
+
+@media screen and (min-width: 720px) {
+  #achievements-summary {
+    background: silver;
+    width: 65%;
+    margin: 2% auto 0 auto;
+    padding: 5px;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #achievements-summary {
+    background: silver;
+    width: 100%;
+    margin: 2% auto 0 auto;
+    padding: 5px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+  }
+}
+
+#achievements-table {
+  margin-top: 0;
+}
+
+.locked { background: #888888; }
+.locked:hover { background: dimgray; }
+.unlocked { background: #FFCC00; }
+.unlocked:hover { background: goldenrod; }
+
+.achievement-img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+/* Scores */
+
+#scores-heading {
+  color: goldenrod;
+}
+
+#scores-header {
+  background: orange;
+  height: 60px;
+  text-indent: 2%;
+}
+
+.gold { background: gold; }
+.silver { background: silver; }
+.bronze { background: #8C7853; }
+
+/* Social */
+
+@media screen and (min-width: 720px) {
+  #fb-container {
+    margin-top: 18%;
+    position: fixed;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #fb-container {
+    margin-top: 70%;
+    position: fixed;
+  }
+}
+
+/* Related */
+
+#related-header {
+  color: darkgrey;
+}
+
+#games-block {
+  width: 60%;
+  margin: 2% auto;
+  background: azure;
+}
+
+.game-section {
+  padding: 2% 5%;
+}
+
+.game-section:not(:last-child) {
+  border-bottom: 1px solid grey;
+}
+
+#shapes { color: chocolate; }
+#header-game { color: maroon; }
+#snake { color: magenta; }
+#online { color: chartreuse; }
+#avoider { color: aqua; }
+#canvas { color: violet; }
+#pong { color: green; }
+
+/* Registration */
+
+#register-form {
+  width: 60%;
+  margin: 2% auto;
+}

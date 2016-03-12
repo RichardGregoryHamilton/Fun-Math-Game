@@ -1,0 +1,108 @@
+<html ng-app="mathGame">
+
+  <head>
+    <title>More Games</title>
+    <ng-include src="'partials/links'"></ng-include>
+		<style>
+			body { opacity: 0; }
+		</style>
+  </head>
+
+  <body>
+
+		<script>
+			window.onload = function() {
+				setTimeout(function() {
+					document.body.style.opacity="100";
+				}, 100);
+			}
+		</script>
+		
+    <ng-include src="'partials/header'"></ng-include>
+    
+    <h1 id="related-header">More Games by the developer</h1>
+    
+    <div id="games-block">
+      <section class="game-section">
+        
+        <h3>
+          <span id="shapes">Shapes</span>
+          <span id="header-game">Game</span>
+        </h3>
+        
+        <p>
+          <strong>Description: </strong>
+          An arcade style game where you are presented with various shapes. Your objective is to determine which shape appears in
+          front of you as quickly as possible.
+        </p>
+        
+        <p>
+          <strong>Link: </strong>
+          <a href="https://shapes-game.firebaseapp.com">Shapes Game</a>
+        </p>
+        
+      </section>
+
+      <section class="game-section">
+        
+        <h3>
+          <span id="snake">Canvas</span>
+          <span id="online">Snake</span>
+        </h3>
+        
+        <p>
+          <strong>Description: </strong>
+          A port of the classic arcade snake game.
+        </p>
+        
+        <p>
+          <strong>Link: </strong>
+          <a href="https://canvas-snake.firebaseapp.com">Canvas Snake</a>
+        </p>
+        
+      </section>
+    
+        <section class="game-section">
+          
+          <h3>
+            <span id="avoider">Avoider</span>
+          </h3>
+          
+          <p>
+            <strong>Description: </strong>
+            An arcade style game where you dodge enemies
+          </p>
+          
+          <p>
+            <strong>Link: </strong>
+            <a href="https://avoider.firebaseapp.com">Avoider</a>
+          </p>
+          
+        </section>
+        
+        <section class="game-section">
+          
+          <h3>
+            <span id="canvas">Canvas</span>
+            <span id="pong">Pong</span>
+          </h3>
+          
+          <p>
+            <strong>Description: </strong>
+            A port of the classic pong game.
+          </p>
+          
+          <p>
+            <strong>Link: </strong>
+            <a href="https://canvas-pong.firebaseapp.com">Canvas Pong</a>
+          </p>
+          
+        </section>
+      </div>
+    <ng-include src="'partials/footer'"></ng-include>
+    
+		<script src="../scripts/main.min.js"></script>
+    
+  </body>
+  
+</html>

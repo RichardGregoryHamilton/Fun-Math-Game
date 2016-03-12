@@ -1,0 +1,49 @@
+<html ng-app='mathGame'>
+
+  <head>
+    <title>High Scores</title>
+    <ng-include src="'partials/links'"></ng-include>
+		<style>
+			body { opacity: 0; }
+		</style>
+  </head>
+
+  <body>
+
+		<script>
+			window.onload = function() {
+				setTimeout(function() {
+					document.body.style.opacity="100";
+				}, 100);
+			}
+		</script>
+		
+    <ng-include src="'partials/header'"></ng-include>
+
+    <h1 class="text-center" id="scores-heading">High Scores</h1>
+
+    <div class="achievements">
+      <table id="scores-table" ng-controller="scoresController">
+
+        <tr id="scores-header">
+          <th>Ranking</th>
+          <th>Score</th>
+          <th>Level</th>
+        </tr>
+        
+        <tr ng-repeat="score in scoreData" class="{{ score.class }}">
+          <td><strong>Rank {{ $index + 1 }}</strong></td>
+          <td>{{ score.score }}</td>
+          <td>{{ score.level }}</td>
+        </tr>
+
+      </table>
+    </div>
+
+    <ng-include src="'partials/footer'"></ng-include>
+    
+		<script src="../scripts/main.min.js"></script>
+
+  </body>
+
+</html>

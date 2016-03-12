@@ -1,0 +1,64 @@
+<html ng-app='mathGame'>
+
+  <head>
+    <title>Achievements</title>
+    <ng-include src="'partials/links'"></ng-include>
+		<style>
+			body { opacity: 0; }
+		</style>
+  </head>
+
+  <body>
+
+		<script>
+			window.onload = function() {
+				setTimeout(function() {
+					document.body.style.opacity="100";
+				}, 100);
+			}
+		</script>
+		
+    <ng-include src="'partials/header'"></ng-include>
+
+    <h1 id="achievements-header">Achievements</h1>
+
+    <div ng-controller="achievementsController">
+      
+      <div id="achievements-summary">
+        Achievements Summary: {{ unlockedAchievements }} out of {{ availableAchievements}} achievements
+        ({{ unlockedPoints }} / {{ availablePoints }} points )
+      </div>
+      
+      <table id="achievements-table">
+        
+        <tr ng-repeat='achievement in levelAchievements' ng-class="{'unlocked': hasAchievement(achievement.name), 'locked': !hasAchievement(achievement.name) }">
+          <td><img class='achievement-img' src='/assets/images/{{ achievement.src }}' alt='{{ achievement.name }}'</td>
+          <td class='level'><strong>Reach {{ achievement.name }}</strong></td>
+          <td>Score {{ achievement.value }} points in one game</td>
+          <td>{{ achievement.points }} points</td>
+        </tr>
+        
+        <tr ng-repeat="achievement in gameAchievements" ng-class="{'unlocked': hasAchievement(achievement.name), 'locked': !hasAchievement(achievement.name)}">
+          <td><img class="achievement-img" src="/assets/images/{{ achievement.src }}" alt="{{ achievement.name }}"</td>
+          <td class="games-played"><strong>{{ achievement.name }}</strong></td>
+          <td>Play {{ achievement.value }} games</td>
+          <td>{{ achievement.points }} points</td>
+        </tr>
+        
+        <tr ng-repeat="achievement in scoreAchievements" ng-class="{'unlocked': hasAchievement(achievement.name), 'locked': !hasAchievement(achievement.name)}">
+          <td><img class="achievement-img" src="/assets/images/{{ achievement.src }}" alt="{{ achievement.name }}"</td>
+          <td class="total-score"><strong>{{ achievement.name }}</strong></td>
+          <td>Reach a cumulative score of {{ achievement.value }}</td>
+          <td>{{ achievement.points }} points</td>
+        </tr>
+        
+      </table>
+    </div>
+    
+    <ng-include src="'partials/footer'"></ng-include>
+    
+		<script src="../scripts/main.min.js"></script>
+		
+  </body>
+  
+</html>

@@ -1,0 +1,103 @@
+<html ng-app="mathGame">
+
+  <head>
+    <title>How To Play</title>
+    <ng-include src="'partials/links'"></ng-include>
+		<style>
+			body { opacity: 0; }
+		</style>
+  </head>
+
+  <body>
+
+		<script>
+			window.onload = function() {
+				setTimeout(function() {
+					document.body.style.opacity="100";
+				}, 100);
+			}
+		</script>
+    
+		<ng-include src="'partials/header'"></ng-include>
+
+    <h1 id="help-header">How To Play</h1>
+
+    <div id="help-block" ng-controller="helpController">
+    
+      <div id="game-help">
+        <p>In this math game, you are given two expressions. Your objective is to compare the two expressions.
+        Determine if the first expression is larger, equal to or less than the second expression.</p>
+        
+        <div class="exp-block">
+          <div class="row">
+            
+            <div class="col-sm-4">
+              <div class='exp1 example'>4 + 5</div>
+            </div>
+            
+            <div class="col-sm-4 operator">
+              <button id="greater-than">&gt</button>
+            </div>
+            
+            <div class="col-sm-4">
+              <div class="exp2 example">1 + 3</div>
+            </div>
+          
+          </div>
+        </div>
+
+        <p>In this case, the first expression is greater. Click the greater than button.</p>
+        
+        <div class="exp-block">
+          <div class="row">
+          
+            <div class="col-md-4">
+              <div class="exp1 example">2 + 4</div>
+            </div>
+            
+            <div class="col-md-4 operator">
+              <button id="equals">=</button>
+            </div>
+            
+            <div class="col-md-4">
+              <div class="exp2 example">5 + 1</div>
+            </div>
+          
+          </div>
+        </div>
+        
+        <p> Here, both expressions equal 6. You click on the equals button</p>
+        
+        <div class="exp-block">
+          <div class="row">
+            
+            <div class="col-md-4">
+              <div class="exp1 example">2 + 1</div>
+            </div>
+          
+            <div class="col-md-4 operator">
+              <button id="less-than">&lt</button>
+            </div>
+            
+            <div class="col-md-4">
+              <div class="exp2 example">3 + 7</div>
+            </div>
+          
+          </div>
+        </div>
+
+        <p>The left hand expression is lower than the right hand expression. Click less than</p>
+
+				<p>Be careful! You only have three seconds to get a correct answer. If the two expressions collide,
+        the game is lost.</p>
+      </div>
+      
+    </div>
+
+    <ng-include src="'partials/footer'"></ng-include>
+    
+    <script src="../scripts/main.min.js"></script>
+
+  </body>
+  
+</html>

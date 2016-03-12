@@ -1,0 +1,89 @@
+<html ng-app="mathGame">
+
+  <head>
+    <title>Math Game</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+    <ng-include src="'/views/partials/links'"></ng-include>
+    <style>
+      body { opacity: 0; }
+    </style>
+  </head>
+
+  <body>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '754606401339742',
+          xfbml      : true,
+          version    : 'v2.5'
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <script>
+      window.onload = function() {
+          document.body.style.opacity="100";
+      }
+    </script>
+    <ng-include src="'views/partials/header'"></ng-include>
+
+    <h1>
+      <span class="fun">Fun</span>
+      <span class="math">Math</span>
+      <span class="game">Game</span>
+    </h1>
+
+    <main>
+    
+      <div ng-controller="achievementsController">
+        <div id="notification"></div>
+      </div>
+      
+      <div ng-controller="scoresController">
+        <div id="game-info" ng-hide="!playing">
+          <p id="level">Level: {{ level }}
+            <span id="score">Score: {{ score }}</span>
+            <span id="high-score">High Score: {{ highScore() }}</span>
+          </p>
+        </div>
+      </div>
+
+      <div ng-controller="gamesController">
+        <div id="game-block">
+        
+        </div>
+
+        <div id="controls" ng-hide="!playing">
+          <button id="greater-than" ng-click="evaluate('greater-than')">&gt</button>
+          <button id="equals" ng-click="evaluate('equals')">=</button>
+          <button id="less-than" ng-click="evaluate('less-than')">&lt</button>
+        </div>
+
+        <div id="options">
+          <button class="btn btn-primary" ng-click="newGame()">New Game</button>
+          <a class="btn btn-success" href="/views/help">How To Play</a>
+          <a class="btn btn-warning" href="/views/achievements">Achievements</a>
+          <a class="btn btn-danger" href="/views/scores">Top Scores</a>
+        </div>
+      </div>
+  
+      <div id="fb-container">
+        <div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div>
+      </div>
+
+    </main>
+
+    <ng-include src="'/views/partials/footer'"></ng-include>
+
+    <script src="scripts/main.min.js"></script>
+  </body>
+
+</html>

@@ -1,0 +1,47 @@
+<html ng-app='mathGame'>
+
+  <head>
+    <title>Login</title>
+    <ng-include src="'partials/links'"></ng-include>
+    <style>
+      body { opacity: 0; }
+    </style>
+  </head>
+  
+  <body>
+  
+    <script>
+      window.onload = function() {
+        setTimeout(function() {
+          document.body.style.opacity="100";
+        }, 100);
+      }
+    </script>
+    
+    <ng-include src="'partials/header'"></ng-include>
+    
+    <h1 class="text-center">Login</h1>
+    
+    <form class="form-horizontal"id="register-form" action="/login" method="post">
+
+			<div class="form-group">
+        <label for="email">Email:</label>
+        <input type="text" class="form-control" name="email" />
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" class="form-control" name="password" />
+      </div>
+      
+      <input type="submit" value="Login" class="btn btn-primary"/>
+      
+    </form>
+    
+    <ng-include src="'partials/footer'"></ng-include>
+    
+    <script src="../scripts/main.min.js"></script>
+    
+  </body>
+  
+</html>

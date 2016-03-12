@@ -1,0 +1,46 @@
+<html ng-app='mathGame'>
+
+  <head>
+    <title>Frequently Asked Questions</title>
+    <ng-include src="'partials/links'"></ng-include>
+    <style>
+      body { opacity: 0; }
+    </style>
+  </head>
+
+  <body>
+    
+    <script>
+      window.onload = function() {
+        setTimeout(function() {
+          document.body.style.opacity="100";
+        }, 100);
+      }
+    </script>
+    
+    <ng-include src="'partials/header'"></ng-include>
+
+    <h1 id="faq-header">Frequently Asked Questions</h1>
+
+    <div id="questions-block">
+      <h3>Question 1: What is this game?</h3>
+      <p>Answer: This is an arcade style math game.</p>
+
+      <h3>Question 2: How do you score points?</h3>
+      <p>Answer: You score points by solving mathematical expressions. You have
+      three choices, and must select the correct one</p>
+
+      <h3>Question 3: Do you have to create an account?</h3>
+      <p>Answer: No. Best of all, this game can be played without signing up.</p>
+
+      <h3>Question 4: Do you have to pay to play this game?</h3>
+      <p>Answer: Unlike most games, this one is completely free.</p>
+    </div>
+
+    <ng-include src="'partials/footer'"></ng-include>
+
+    <script src="../scripts/main.min.js"></script>
+
+  </body>
+  
+</html>
